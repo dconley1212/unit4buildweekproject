@@ -1,6 +1,6 @@
 const { getUserByFilter } = require("./users-model");
 
-const checkAllRequiredFields = (req, res, next) => {
+const checkRegistrationFields = (req, res, next) => {
   const { username, password, phone_number } = req.body;
   if (!username) {
     next({ status: 400, message: "missing username" });
@@ -41,8 +41,23 @@ const phoneNumberUnique = async (req, res, next) => {
   }
 };
 
+const checkUsernameExists = async (req, res, next) => {
+  try {
+    const { username } = req.body;
+    const usernameFound = await getUserByFilter({ username });
+    if (usernameFound) {
+      next();
+    } else {
+      next({ status: 401, message: "invalid credentials" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
-  checkAllRequiredFields,
+  checkRegistrationFields,
   usernameUnique,
   phoneNumberUnique,
+  checkUsernameExists,
 };
