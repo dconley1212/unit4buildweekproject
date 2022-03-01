@@ -13,8 +13,16 @@ function getPlantByPlantId(plant_id) {
 }
 
 async function addPlants(plant) {
-  const [id] = await db("plants").insert(plant);
-  const newPlant = await getPlantByPlantId(id);
+  const [newPlant] = await db("plants").insert(plant, [
+    "plant_id",
+    "nickname",
+    "species",
+    "h20_frequency",
+    "image",
+    "user_id",
+    "color",
+  ]);
+
   return newPlant;
 }
 
