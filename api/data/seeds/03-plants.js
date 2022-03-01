@@ -3,11 +3,9 @@
  * @returns { Promise<void> }
  */
 exports.seed = function (knex) {
-  // Deletes ALL existing entries
   return knex("plants")
     .del()
     .then(function () {
-      // Inserts seed entries
       return knex("plants").insert([
         {
           nickname: "Fiddle Leaf Fig Tree",
