@@ -17,10 +17,10 @@ const usernameUnique = async (req, res, next) => {
   try {
     const { username } = req.body;
     const usernameExists = await getUserByFilter({ username });
-    if (usernameExists) {
-      next({ status: 400, message: "username already exists" });
-    } else {
+    if (!usernameExists || usernameExists.length === 0) {
       next();
+    } else {
+      next({ status: 400, message: "username already exists" });
     }
   } catch (err) {
     next(err);
@@ -31,10 +31,10 @@ const phoneNumberUnique = async (req, res, next) => {
   try {
     const { phone_number } = req.body;
     const phoneNumberExists = await getUserByFilter({ phone_number });
-    if (phoneNumberExists) {
-      next({ status: 400, message: "phone number already exists" });
-    } else {
+    if (!phoneNumberExists || phoneNumberExists.length === 0) {
       next();
+    } else {
+      next({ status: 400, message: "phone number already exists" });
     }
   } catch (err) {
     next(err);

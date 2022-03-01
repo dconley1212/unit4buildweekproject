@@ -8,7 +8,7 @@ const {
   usernameUnique,
   checkRegistrationFields,
   checkUsernameExists,
-} = require("./users-middleware");
+} = require("./users-authmiddleware");
 
 function buildToken(user) {
   const payload = {
@@ -22,10 +22,8 @@ function buildToken(user) {
   return jwt.sign(payload, JWT_SECRET, options);
 }
 
-router.get("/", async (req, res) => {});
-
 router.post(
-  "/auth/register",
+  "/register",
   checkRegistrationFields,
   usernameUnique,
   phoneNumberUnique,
@@ -42,10 +40,10 @@ router.post(
   }
 );
 
-router.post("/auth/login", checkUsernameExists, (req, res, next) => {
+router.post("/login", checkUsernameExists, (req, res, next) => {
   const { username, password } = req.body;
   getUserByFilter({ username })
-    .then((user) => {
+    .then(([user]) => {
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = buildToken(user);
         res.status(200).json({
