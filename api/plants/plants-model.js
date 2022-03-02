@@ -30,10 +30,17 @@ function updatePlant(plant_id, plant) {
   return db("plants").where("plant_id", plant_id).update(plant);
 }
 
+async function deletePlant(plant_id) {
+  const deletePlant = await getPlantByPlantId(plant_id);
+  await db("plants").where("plant_id", plant_id).del();
+  return deletePlant;
+}
+
 module.exports = {
   getAllPlants,
   getPlantsWithUserId,
   getPlantByPlantId,
   addPlants,
   updatePlant,
+  deletePlant,
 };
