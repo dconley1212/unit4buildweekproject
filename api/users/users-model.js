@@ -1,4 +1,5 @@
 const db = require("../data/db-config");
+const { allRequiredFields } = require("../plants/plants-middleware");
 
 function getAllUsers() {
   return db("users");
@@ -21,9 +22,16 @@ async function insertUser(user) {
   return newUserObject;
 }
 
+async function updateUserInfo(username, user) {
+  const updateUser = await getUserByFilter(username);
+  await db("users").where(username).update(user);
+  return updateUser;
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
   getUserByFilter,
   insertUser,
+  updateUserInfo,
 };

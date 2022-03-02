@@ -47,14 +47,19 @@ router.put(
   }
 );
 
-router.delete("/:user/:plant_id", restricted, async (req, res, next) => {
-  try {
-    const { plant_id } = req.params;
-    const [deletedPlant] = await Plants.deletePlant(plant_id);
-    res.status(200).json(deletedPlant);
-  } catch (err) {
-    next(err);
+router.delete(
+  "/:user/:plant_id",
+  restricted,
+  checkIfPlantExists,
+  async (req, res, next) => {
+    try {
+      const { plant_id } = req.params;
+      const [deletedPlant] = await Plants.deletePlant(plant_id);
+      res.status(200).json(deletedPlant);
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
 module.exports = router;

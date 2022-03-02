@@ -1,7 +1,11 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { insertUser, getUserByFilter } = require("./users-model");
+const {
+  insertUser,
+  getUserByFilter,
+  updateUserInfo,
+} = require("./users-model");
 const { BCRYPT_ROUNDS, JWT_SECRET } = require("../../config/index");
 const {
   phoneNumberUnique,
@@ -9,6 +13,7 @@ const {
   checkRegistrationFields,
   checkUsernameExists,
 } = require("./users-authmiddleware");
+const { restricted } = require("../plants/plants-middleware");
 
 function buildToken(user) {
   const payload = {
@@ -56,5 +61,22 @@ router.post("/login", checkUsernameExists, (req, res, next) => {
     })
     .catch(next);
 });
+
+router.put(
+  "/update",
+  restricted,
+  checkUsernameExists,
+  async (req, res, next) => {
+    try {
+      const { username, password, phone_number } = req.body;
+      const hash = bcrypt.hashSync(password, BCRYPT_ROUNDS);
+      const user = { username, password: hash, phone_number };
+      const [updatedUser] = await updateUserInfo({ username }, user);
+      res.status(200).json(updatedUser);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 module.exports = router;
