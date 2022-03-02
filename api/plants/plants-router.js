@@ -1,5 +1,9 @@
 const router = require("express").Router();
-const { restricted, allRequiredFields } = require("./plants-middleware");
+const {
+  restricted,
+  allRequiredFields,
+  checkIfPlantExists,
+} = require("./plants-middleware");
 const Plants = require("./plants-model");
 
 router.get("/:user_id", restricted, async (req, res, next) => {
@@ -20,6 +24,23 @@ router.post(
     try {
       const newPlant = await Plants.addPlants(req.body);
       res.status(200).json(newPlant);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+router.put(
+  "/:user_id/:plant_id",
+  restricted,
+  allRequiredFields,
+  checkIfPlantExists,
+  async (req, res, next) => {
+    try {
+      const { plant_id } = req.params;
+      await Plants.updatePlant(plant_id, req.body);
+      const [newUpdatedPlant] = await Plants.getPlantByPlantId(plant_id);
+      res.status(200).json(newUpdatedPlant);
     } catch (err) {
       next(err);
     }

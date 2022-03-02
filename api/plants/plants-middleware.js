@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../../config/index");
+const { getPlantByPlantId } = require("./plants-model");
 
 const restricted = (req, res, next) => {
   const token = req.headers.authorization;
@@ -33,7 +34,22 @@ const allRequiredFields = (req, res, next) => {
   }
 };
 
+const checkIfPlantExists = async (req, res, next) => {
+  try {
+    const { plant_id } = req.params;
+    const plantById = await getPlantByPlantId(plant_id);
+    if (plantById) {
+      next();
+    } else {
+      next({ status: 404, message: "plant not found" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   restricted,
   allRequiredFields,
+  checkIfPlantExists,
 };

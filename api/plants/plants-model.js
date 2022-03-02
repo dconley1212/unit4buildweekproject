@@ -26,9 +26,14 @@ async function addPlants(plant) {
   return newPlant;
 }
 
+function updatePlant(plant_id, plant) {
+  return db("plants").where("plant_id", plant_id).update(plant);
+}
+
 module.exports = {
   getAllPlants,
   getPlantsWithUserId,
   getPlantByPlantId,
   addPlants,
+  updatePlant,
 };
