@@ -12,6 +12,7 @@
     "database:prod": "heroku pg:psql -a waterplantsapp",
     "seed:prod": "heroku run knex seed:run -a waterplantsapp",
     "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",
+    "heroku-postbuild": "cd client && npm i && npm run build",
     "deploy": "git push heroku main"
   },
   "engines": {
@@ -20,6 +21,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.26.0",
     "bcrypt": "^5.0.1",
     "cors": "2.8.5",
     "dotenv": "14.3.0",
