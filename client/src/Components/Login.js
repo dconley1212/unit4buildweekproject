@@ -1,20 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import styled, { createGlobalStyle, css } from "styled-components";
-
-const GlobalStyle = createGlobalStyle`
-html {
-    height: 100%
-}
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(to bottom, #8FBC8F, #3CB371);
-    height: 100%;
-    margin: 0;
-    color: #555;
-}
-`;
+import styled, { css } from "styled-components";
 
 const sharedStyles = css`
   background-color: #eee;
@@ -40,10 +27,10 @@ const StyledForm = styled.form`
   max-width: 500px;
   padding: 40px;
   background-color: #fff;
-  border-radius: 10px
+  border-radius: 15px;
+  border: 0.2px solid white;
   box-sizing: border-box;
-  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
-  `;
+`;
 
 const StyledInput = styled.input`
   display: block;
@@ -94,7 +81,6 @@ const Login = () => {
 
   return (
     <div>
-      <GlobalStyle />
       <StyledFormWrapper>
         <StyledForm onSubmit={handleLoginSubmit}>
           <label>
