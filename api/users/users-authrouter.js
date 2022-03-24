@@ -51,6 +51,7 @@ router.post("/login", checkUsernameExists, (req, res, next) => {
     .then(([user]) => {
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = buildToken(user);
+        console.log("user found");
         res.status(200).json({
           message: `Welcome back ${user.username}`,
           token: token,

@@ -5,7 +5,8 @@ import PlantCard from "./PlantCard";
 
 const Dashboard = () => {
   const [plants, setPlants] = useState([]);
-  const { user_id } = useParams();
+  // const { user_id } = useParams();
+  const user_id = "2";
   const { push } = useHistory();
 
   useEffect(() => {

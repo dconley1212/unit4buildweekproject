@@ -66,17 +66,19 @@ const Login = () => {
     });
   }
 
-  function handleLoginSubmit(e) {
+  async function handleLoginSubmit(e) {
+    console.log("login form function triggered");
     e.prevent.default();
 
     axios
       .post("http://localhost:9000/api/users/auth/login", form)
-      .then((resp) => {
-        localStorage.setItem("token", resp.data.token);
-        localStorage.setItem("username", resp.data.username);
-        push("/dashboard");
+      .then(async (resp) => {
+        console.log(resp);
+        await localStorage.setItem("token", resp.data.token);
+        await localStorage.setItem("username", resp.data.username);
+        return push("/dashboard");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("err:", err));
   }
 
   return (
