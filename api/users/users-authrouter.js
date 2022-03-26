@@ -38,7 +38,7 @@ router.post(
       const hash = bcrypt.hashSync(password, BCRYPT_ROUNDS);
       const user = { username, password: hash, phone_number };
       const newUser = await insertUser(user);
-      res.status(200).json(newUser);
+      res.status(204).json(newUser);
     } catch (err) {
       next(err);
     }
@@ -52,7 +52,7 @@ router.post("/login", checkUsernameExists, (req, res, next) => {
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = buildToken(user);
         console.log("user found");
-        res.status(200).json({
+        res.status(204).json({
           message: `Welcome back ${user.username}`,
           token: token,
         });

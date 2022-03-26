@@ -74,8 +74,9 @@ const Login = () => {
       .post("http://localhost:9000/api/users/auth/login", form)
       .then(async (resp) => {
         console.log(resp);
-        await localStorage.setItem("token", resp.data.token);
-        await localStorage.setItem("username", resp.data.username);
+        localStorage.setItem("token", resp.data.token);
+        localStorage.setItem("username", resp.data.username);
+        localStorage.setItem("subject", resp.data.subject);
         return push("/dashboard");
       })
       .catch((err) => console.log("err:", err));
