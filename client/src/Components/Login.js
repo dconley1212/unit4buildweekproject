@@ -66,9 +66,9 @@ const Login = () => {
     });
   }
 
-  async function handleLoginSubmit(e) {
+  function handleLoginSubmit(e) {
     console.log("login form function triggered");
-    e.prevent.default();
+    e.preventDefault();
 
     axios
       .post("http://localhost:9000/api/users/auth/login", form)

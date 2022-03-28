@@ -22,7 +22,7 @@ const AddPlant = () => {
     e.preventDefault();
 
     axiosWithAuth()
-      .post(`/api/plants/${user_id}`, newPlant)
+      .post(`/plants/${user_id}`, newPlant)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
