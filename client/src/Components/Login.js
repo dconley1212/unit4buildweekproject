@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import styled, { css } from "styled-components";
+import getPayloadData from "../utils/tokenPayload";
 
 const sharedStyles = css`
   background-color: #eee;
@@ -72,11 +73,8 @@ const Login = () => {
 
     axios
       .post("http://localhost:9000/api/users/auth/login", form)
-      .then(async (resp) => {
-        console.log(resp);
-        localStorage.setItem("token", resp.data.token);
-        localStorage.setItem("username", resp.data.username);
-        localStorage.setItem("subject", resp.data.subject);
+      .then((resp) => {
+        getPayloadData(resp.data.token);
         return push("/dashboard");
       })
       .catch((err) => console.log("err:", err));

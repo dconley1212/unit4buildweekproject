@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useParams } from "react-router";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 const AddPlant = () => {
@@ -9,7 +8,7 @@ const AddPlant = () => {
     h20_frequency: "",
   });
 
-  const { user_id } = useParams();
+  const user_id = localStorage.getItem("user_id");
 
   const handleChanges = (e) => {
     setNewPlant({
