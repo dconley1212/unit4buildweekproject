@@ -26,6 +26,8 @@ function buildToken(user) {
   return jwt.sign(payload, JWT_SECRET, options);
 }
 
+//all login and register routes are working
+
 router.post(
   "/register",
   checkRegistrationFields,

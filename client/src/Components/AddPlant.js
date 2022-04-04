@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
+//I only have 3 inputs currently because I believe that the user_id, required for the backend server,
+//has to have it for it to work correctly, but I am trying to figure out if the user_id can be passed
+// from the url to the server using react because the backend creates the user_id and the user won't know
+// that information.
+
 const AddPlant = () => {
   const [newPlant, setNewPlant] = useState({
     nickname: "",

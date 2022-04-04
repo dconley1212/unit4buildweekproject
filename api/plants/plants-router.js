@@ -6,6 +6,8 @@ const {
 } = require("./plants-middleware");
 const Plants = require("./plants-model");
 
+//these routes have been tested and are working on postman
+
 router.get("/:user_id", restricted, async (req, res, next) => {
   try {
     const { user_id } = req.params;
