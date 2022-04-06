@@ -7,13 +7,13 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 // that information.
 
 const AddPlant = () => {
+  const user_id = localStorage.getItem("user_id");
   const [newPlant, setNewPlant] = useState({
     nickname: "",
     species: "",
     h20_frequency: "",
+    user_id: user_id,
   });
-
-  const user_id = localStorage.getItem("user_id");
 
   const handleChanges = (e) => {
     setNewPlant({
