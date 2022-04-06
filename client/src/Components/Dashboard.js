@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import PlantCard from "./PlantCard";
+import styled from "styled-components";
+
+const StyledCardContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+`;
 
 const Dashboard = () => {
   const [plants, setPlants] = useState([]);
@@ -22,10 +28,12 @@ const Dashboard = () => {
   return (
     <div>
       <h1>Plant List:</h1>
-      {plants.map((plant) => {
-        return <PlantCard plant={plant} />;
-      })}
       <button onClick={handleClick}>Add a Plant</button>
+      <StyledCardContainer>
+        {plants.map((plant) => {
+          return <PlantCard plant={plant} />;
+        })}
+      </StyledCardContainer>
     </div>
   );
 };

@@ -8,11 +8,11 @@ import styled from "styled-components";
 const StyledCard = styled.div`
   background: white;
   padding: 1rem;
-  border: 1px;
-  border-radius: 0.25rem;
+  border: none;
+  box-shadow: 0 2px 5px 0;
 `;
 const StyledCardHeader = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: "Oxygen", sans-serif;
   margin-bottom: 0.25rem;
 `;
@@ -29,9 +29,14 @@ const StyledEditButton = styled.button`
   color: white;
   border: none;
   padding: 0.5em 0.75em;
-  border-radius: 0.25em;
+  border-radius: 0.4em;
   cursor: pointer;
   margin-right: 0.25em;
+  &:hover {
+    background-color: silver;
+    color: black;
+    transition: 0.2s ease-in-out;
+  }
 `;
 
 const StyledDeleteButton = styled.button`
@@ -39,9 +44,14 @@ const StyledDeleteButton = styled.button`
   color: white;
   border: none;
   padding: 0.5em 0.75em;
-  border-radius: 0.25em;
+  border-radius: 0.4em;
   cursor: pointer;
   margin-left: 0.25em;
+  &:hover {
+    background-color: silver;
+    color: black;
+    transition: 0.2s ease-in-out;
+  }
 `;
 
 const PlantCard = (props) => {
