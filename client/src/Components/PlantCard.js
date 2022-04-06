@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-// left off on figuring out how to place the styledcard footer and was thinking
-//about putting it around the buttons
+// need to figure out how to make the shadow around card and bring in the width of the card
+// maybe through the grid styling or through my own custom way. Also look into hover effect
+// for the button.
 
 const StyledCard = styled.div`
   background: white;
@@ -30,6 +31,7 @@ const StyledEditButton = styled.button`
   padding: 0.5em 0.75em;
   border-radius: 0.25em;
   cursor: pointer;
+  margin-right: 0.25em;
 `;
 
 const StyledDeleteButton = styled.button`
@@ -39,6 +41,7 @@ const StyledDeleteButton = styled.button`
   padding: 0.5em 0.75em;
   border-radius: 0.25em;
   cursor: pointer;
+  margin-left: 0.25em;
 `;
 
 const PlantCard = (props) => {
@@ -52,8 +55,10 @@ const PlantCard = (props) => {
       <StyledCardBody>
         <p className="card_description">{`The species:${plant.species}, needs ${plant.h20_frequency}`}</p>
       </StyledCardBody>
-      <button>Edit Plant Details</button>
-      <button>Delete Plant</button>
+      <StyledCardFooter>
+        <StyledEditButton>Edit Plant Details</StyledEditButton>
+        <StyledDeleteButton>Delete Plant</StyledDeleteButton>
+      </StyledCardFooter>
     </StyledCard>
   );
 };
