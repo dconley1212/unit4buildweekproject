@@ -6,10 +6,6 @@ import Register from "./Register";
 import styled, { createGlobalStyle } from "styled-components";
 import AddPlant from "./AddPlant";
 
-//Currently I think my route on the client side needs to hold id information to
-// hit the correct router on the backend server. Because I tested the backend routes
-// and they are working.
-
 const GlobalStyle = createGlobalStyle`
 html {
     height: 100%

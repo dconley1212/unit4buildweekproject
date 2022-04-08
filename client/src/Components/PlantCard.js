@@ -17,8 +17,17 @@ const StyledCardHeader = styled.div`
   margin-bottom: 0.25rem;
 `;
 
+const StyledCardImage = styled.img`
+  display: block;
+  max-height: 200px;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  object-position: center;
+`;
+
 const StyledCardBody = styled.div`
-  font-size: 0.9rem;
+  font-size: 1rem;
 `;
 
 const StyledCardFooter = styled.div`
@@ -61,6 +70,10 @@ const PlantCard = (props) => {
     <StyledCard>
       <StyledCardHeader className="card_body">
         <h2 className="card_title">{plant.nickname}</h2>
+        <StyledCardImage
+          alt="jade plant"
+          src="https://source.unsplash.com/nKyN0Lfy-1w"
+        ></StyledCardImage>
       </StyledCardHeader>
       <StyledCardBody>
         <p className="card_description">{`The species:${plant.species}, needs ${plant.h20_frequency}`}</p>

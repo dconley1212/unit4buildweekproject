@@ -4,9 +4,28 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import PlantCard from "./PlantCard";
 import styled from "styled-components";
 
+const StyledTitle = styled.h1`
+  color: black;
+  display: flex;
+  justify-content: center;
+  font-family: "Oxygen", sans-serif;
+`;
+
+const StyledAddButton = styled.button`
+  display: flex;
+  background-color: black;
+  color: white;
+  padding: 0.5em 0.75em;
+  border-radius: 0.4em;
+  margin: 0.25rem 0rem 1.5rem 1.5rem;
+  cursor: pointer;
+`;
+
 const StyledCardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  align-items: flex-start;
 `;
 
 const Dashboard = () => {
@@ -27,8 +46,8 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>Plant List:</h1>
-      <button onClick={handleClick}>Add a Plant</button>
+      <StyledTitle>My Plants:</StyledTitle>
+      <StyledAddButton onClick={handleClick}>Add a Plant</StyledAddButton>
       <StyledCardContainer>
         {plants.map((plant) => {
           return <PlantCard plant={plant} />;
