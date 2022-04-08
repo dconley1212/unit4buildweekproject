@@ -1,10 +1,38 @@
 import React, { useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import styled from "styled-components";
 
-//I only have 3 inputs currently because I believe that the user_id, required for the backend server,
-//has to have it for it to work correctly, but I am trying to figure out if the user_id can be passed
-// from the url to the server using react because the backend creates the user_id and the user won't know
-// that information.
+const StyledFormContainer = styled.div`
+  background: #d3d3d3;
+  padding: 200px;
+`;
+
+const StyledForm = styled.form`
+  background: white;
+  border: 1px solid #dedede;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 30px 50px;
+`;
+
+const StyledInput = styled.input`
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+`;
+const StyledLabel = styled.label`
+  color: black;
+  display: block;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+`;
 
 const AddPlant = () => {
   const user_id = localStorage.getItem("user_id");
@@ -33,38 +61,38 @@ const AddPlant = () => {
 
   return (
     <div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label>
+      <StyledFormContainer>
+        <StyledForm onSubmit={handleSubmit}>
+          <StyledLabel>
             Nickname:
-            <input
+            <StyledInput
               type="text"
               name="nickname"
               value={newPlant.nickname}
               onChange={handleChanges}
             />
-          </label>
-          <label>
+          </StyledLabel>
+          <StyledLabel>
             Species:
-            <input
+            <StyledInput
               type="text"
               name="species"
               value={newPlant.species}
               onChange={handleChanges}
             />
-          </label>
-          <label>
+          </StyledLabel>
+          <StyledLabel>
             h20 Frequency:
-            <input
+            <StyledInput
               type="text"
               name="h20_frequency"
               value={newPlant.h20_frequency}
               onChange={handleChanges}
             />
-          </label>
+          </StyledLabel>
           <button>Add Plant</button>
-        </form>
-      </div>
+        </StyledForm>
+      </StyledFormContainer>
     </div>
   );
 };
