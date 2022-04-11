@@ -82,7 +82,6 @@ function App() {
       </StyledHeader>
       <Switch>
         <Route path="/dashboard/add">
-          <GlobalStyle />
           <AddPlant />
         </Route>
         <Route path="/dashboard">

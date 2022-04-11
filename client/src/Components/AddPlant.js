@@ -3,24 +3,25 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import styled from "styled-components";
 
 const StyledFormContainer = styled.div`
-  background: #d3d3d3;
+  background: #008080;
   padding: 200px;
 `;
 
 const StyledForm = styled.form`
-  background: white;
+  background: #fffff0;
   border: 1px solid #dedede;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   margin: 0 auto;
-  max-width: 500px;
-  padding: 30px 50px;
+  max-width: 700px;
+  padding: 40px 50px;
 `;
 
 const StyledInput = styled.input`
   border: 1px solid black;
-  border-radius: 4px;
+  border-radius: 10px;
   box-sizing: border-box;
   padding: 10px;
   width: 100%;
@@ -29,9 +30,18 @@ const StyledLabel = styled.label`
   color: black;
   display: block;
   font-family: sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
-  margin-bottom: 5px;
+  margin-bottom: 1.5rem;
+`;
+
+const StyledButton = styled.button`
+  padding: 1em;
+  border-radius: 10em;
+  margin: 1.5rem;
+  color: white;
+  background: #008080;
+  font-size: 1em;
 `;
 
 const AddPlant = () => {
@@ -90,7 +100,7 @@ const AddPlant = () => {
               onChange={handleChanges}
             />
           </StyledLabel>
-          <button>Add Plant</button>
+          <StyledButton>Add Plant</StyledButton>
         </StyledForm>
       </StyledFormContainer>
     </div>
