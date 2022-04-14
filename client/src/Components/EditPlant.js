@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 const EditPlant = () => {
   const user_id = localStorage.getItem("user_id");
+  const plant_id = localStorage.getItem("plant_id");
   const [editedPlant, setEditedPlant] = useState({
     nickname: "",
     species: "",
@@ -9,7 +11,22 @@ const EditPlant = () => {
     user_id: user_id,
   });
 
-  const handleChanges = (e) => {};
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`/plants/${user_id}/${plant_id}`)
+      .then((res) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+  const handleChanges = (e) => {
+    e.preventDefault();
+    setEditedPlant({
+      ...editedPlant,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {};
 
