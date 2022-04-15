@@ -18,7 +18,9 @@ const EditPlant = () => {
   useEffect(() => {
     axiosWithAuth()
       .get(`/plants/${user_id}/${plant_id}`)
-      .then((res) => {})
+      .then((res) => {
+        console.log(res);
+      })
       .catch((err) => {
         console.log(err);
       });

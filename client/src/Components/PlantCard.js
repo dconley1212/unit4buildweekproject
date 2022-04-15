@@ -1,9 +1,6 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-
-// need to figure out how to make the shadow around card and bring in the width of the card
-// maybe through the grid styling or through my own custom way. Also look into hover effect
-// for the button.
 
 const StyledCard = styled.div`
   background: white;
@@ -66,6 +63,14 @@ const StyledDeleteButton = styled.button`
 const PlantCard = (props) => {
   const { plant } = props;
 
+  const { push } = useHistory();
+
+  const user_id = localStorage.getItem("user_id");
+
+  const handleClick = () => {
+    push(`/update/${user_id}/${plant.plant_id}`);
+  };
+
   return (
     <StyledCard>
       <StyledCardHeader className="card_body">
@@ -79,7 +84,9 @@ const PlantCard = (props) => {
         <p className="card_description">{`The species:${plant.species}, needs ${plant.h20_frequency}`}</p>
       </StyledCardBody>
       <StyledCardFooter>
-        <StyledEditButton>Edit Plant Details</StyledEditButton>
+        <StyledEditButton onClick={handleClick}>
+          Edit Plant Details
+        </StyledEditButton>
         <StyledDeleteButton>Delete Plant</StyledDeleteButton>
       </StyledCardFooter>
     </StyledCard>

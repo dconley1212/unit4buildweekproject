@@ -6,7 +6,7 @@ const {
 } = require("./plants-middleware");
 const Plants = require("./plants-model");
 
-//these routes have been tested and are working on postman, except get by plant id
+//these routes have been tested and are working on postman
 
 router.get("/:user_id", restricted, async (req, res, next) => {
   try {
@@ -40,7 +40,7 @@ router.get(
     try {
       const { plant_id } = req.params;
       const plantById = await Plants.getPlantByPlantId(plant_id);
-      res.status(200).json({ plantById });
+      res.status(200).json(plantById);
     } catch (err) {
       next(err);
     }
