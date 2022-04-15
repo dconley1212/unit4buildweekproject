@@ -5,6 +5,7 @@ import Dashboard from "./Dashboard";
 import Register from "./Register";
 import styled, { createGlobalStyle } from "styled-components";
 import AddPlant from "./AddPlant";
+import EditPlant from "./EditPlant";
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -81,6 +82,9 @@ function App() {
         </header>
       </StyledHeader>
       <Switch>
+        <Route path="/update/:user_id/:plant_id">
+          <EditPlant />
+        </Route>
         <Route path="/dashboard/add">
           <AddPlant />
         </Route>

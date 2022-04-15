@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 //need to create the get by id endpoint on the backend in order to hit the endpoint for
@@ -7,7 +8,7 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 
 const EditPlant = () => {
   const user_id = localStorage.getItem("user_id");
-  const plant_id = localStorage.getItem("plant_id");
+  const { plant_id } = useParams();
   const [editedPlant, setEditedPlant] = useState({
     nickname: "",
     species: "",
