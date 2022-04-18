@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import styled from "styled-components";
 
@@ -46,6 +47,7 @@ const StyledButton = styled.button`
 
 const AddPlant = () => {
   const user_id = localStorage.getItem("user_id");
+  const { push } = useHistory();
   const [newPlant, setNewPlant] = useState({
     nickname: "",
     species: "",
@@ -65,7 +67,10 @@ const AddPlant = () => {
 
     axiosWithAuth()
       .post(`/plants/${user_id}`, newPlant)
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        push("/dashboard");
+      })
       .catch((err) => console.log(err));
   };
 
