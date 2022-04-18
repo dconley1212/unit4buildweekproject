@@ -20,12 +20,12 @@ const EditPlant = () => {
     axiosWithAuth()
       .get(`/plants/${user_id}/${plant_id}`)
       .then((res) => {
-        console.log(res);
+        setEditedPlant(res.data[0]);
       })
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, []);
 
   const handleChanges = (e) => {
     e.preventDefault();
@@ -35,7 +35,17 @@ const EditPlant = () => {
     });
   };
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axiosWithAuth()
+      .put(`/plants/${user_id}/${plant_id}`, editedPlant)
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
