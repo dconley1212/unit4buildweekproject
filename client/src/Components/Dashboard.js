@@ -4,10 +4,6 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import PlantCard from "./PlantCard";
 import styled from "styled-components";
 
-//Edit plant and add plant components are both working but the dashboard is only reflecting
-// the edited plant and won't show an added plant even though I got a 200 status and I can
-// see the database has been updated in Postico.
-
 const StyledTitle = styled.h1`
   color: black;
   display: flex;
@@ -41,8 +37,8 @@ const Dashboard = () => {
     axiosWithAuth()
       .get(`/plants/${user_id}`)
       .then((res) => {
-        setPlants([res.data]);
-        console.log(plants);
+        setPlants(res.data);
+        console.log(res);
       })
       .catch((err) => console.log(err));
   }, []);
