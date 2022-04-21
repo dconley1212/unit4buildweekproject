@@ -64,6 +64,8 @@ router.post("/login", checkUsernameExists, (req, res, next) => {
     .catch(next);
 });
 
+router.post("/logout", (req, res, next) => {});
+
 router.put(
   "/update",
   restricted,
