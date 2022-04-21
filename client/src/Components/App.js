@@ -7,6 +7,9 @@ import styled, { createGlobalStyle } from "styled-components";
 import AddPlant from "./AddPlant";
 import EditPlant from "./EditPlant";
 
+//lets create state errors next for login and for fields like add plant or edit plant
+// and create a logout component
+
 const GlobalStyle = createGlobalStyle`
 html {
     height: 100%
