@@ -73,6 +73,9 @@ const StyledActionParagraph = styled.p`
 `;
 
 function App() {
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
   return (
     <div>
       <StyledHeader>
@@ -80,7 +83,9 @@ function App() {
           <StyledLinks>
             <StyledNavLink to="/">Home</StyledNavLink>
             <StyledNavLink to="/login">Login</StyledNavLink>
-            <StyledNavLink to="/login">Logout</StyledNavLink>
+            <StyledNavLink to="/login" onClick={handleLogout}>
+              Logout
+            </StyledNavLink>
             <StyledNavLink to="/register">Register</StyledNavLink>
           </StyledLinks>
         </header>
