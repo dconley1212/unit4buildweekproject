@@ -8,8 +8,7 @@ import AddPlant from "./AddPlant";
 import EditPlant from "./EditPlant";
 import PrivateRoute from "./PrivateRoute";
 
-//lets create state errors next for login and for fields like add plant or edit plant
-// and create a logout component
+//lets create state errors next for login, register, add plant, or edit plant
 
 const GlobalStyle = createGlobalStyle`
 html {

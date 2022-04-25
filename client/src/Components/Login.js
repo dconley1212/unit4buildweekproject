@@ -68,9 +68,7 @@ const Login = () => {
   }
 
   function handleLoginSubmit(e) {
-    console.log("login form function triggered");
     e.preventDefault();
-
     axios
       .post("http://localhost:9000/api/users/auth/login", form)
       .then((resp) => {
@@ -89,6 +87,7 @@ const Login = () => {
             <StyledInput
               type="text"
               name="username"
+              placeholder="Username"
               value={form.username}
               onChange={handleChange}
             ></StyledInput>
@@ -98,6 +97,7 @@ const Login = () => {
             <StyledInput
               type="password"
               name="password"
+              placeholder="Password"
               value={form.password}
               onChange={handleChange}
             ></StyledInput>
