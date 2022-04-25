@@ -6,6 +6,7 @@ import Register from "./Register";
 import styled, { createGlobalStyle } from "styled-components";
 import AddPlant from "./AddPlant";
 import EditPlant from "./EditPlant";
+import PrivateRoute from "./PrivateRoute";
 
 //lets create state errors next for login and for fields like add plant or edit plant
 // and create a logout component
@@ -85,24 +86,24 @@ function App() {
         </header>
       </StyledHeader>
       <Switch>
-        <Route path="/update/:user_id/:plant_id">
+        <PrivateRoute path="/update/:user_id/:plant_id">
           <EditPlant />
-        </Route>
-        <Route path="/dashboard/add">
+        </PrivateRoute>
+        <PrivateRoute path="/dashboard/add">
           <AddPlant />
-        </Route>
-        <Route path="/dashboard">
+        </PrivateRoute>
+        <PrivateRoute path="/dashboard">
           <GlobalStyle />
           <Dashboard />
-        </Route>
-        <Route path="/register">
+        </PrivateRoute>
+        <PrivateRoute path="/register">
           <GlobalStyle />
           <Register />
-        </Route>
-        <Route path="/login">
+        </PrivateRoute>
+        <PrivateRoute path="/login">
           <GlobalStyle />
           <Login />
-        </Route>
+        </PrivateRoute>
         <Route exact path="/">
           <GlobalStyle />
           <StyledTitle>Healthy Plants</StyledTitle>
