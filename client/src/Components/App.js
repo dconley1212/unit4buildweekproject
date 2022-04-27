@@ -3,14 +3,14 @@ import { Route, Link, Switch } from "react-router-dom";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Register from "./Register";
-import styled, { createGlobalStyle } from "styled-com
+import styled, { createGlobalStyle } from "styled-components";
 import AddPlant from "./AddPlant";
 import EditPlant from "./EditPlant";
 import PrivateRoute from "./PrivateRoute";
 
 //lets create state errors next for login, register, add plant, or edit plant
 // you need to create different formschema components for each validation that you plan to use
-// so create validation folder and create your different formschemas and add them 
+// so create validation folder and create your different formschemas and add them
 // to each different form
 
 const GlobalStyle = createGlobalStyle`
