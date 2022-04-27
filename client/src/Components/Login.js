@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import styled, { css } from "styled-components";
 import getPayloadData from "../utils/tokenPayload";
+import * as Yup from "yup";
+import LoginFormSchema from "../validations/LoginFormSchema";
 
 const sharedStyles = css`
   background-color: #eee;
@@ -58,9 +60,27 @@ const Login = () => {
     password: "",
   });
 
+  const [loginError, setLoginError] = useState({
+    username: "",
+    password: "",
+  });
+
   const { push } = useHistory();
 
+  function validate(name, value) {
+    Yup.reach(LoginFormSchema, name)
+      .validate(value)
+      .then(() => {
+        setLoginError({ ...loginError, [name]: "" });
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoginError({ ...loginError, [name]: err.errors[0] });
+      });
+  }
+
   function handleChange(e) {
+    validate(e.target.name, e.target.value);
     setForm({
       ...form,
       [e.target.name]: e.target.value,
