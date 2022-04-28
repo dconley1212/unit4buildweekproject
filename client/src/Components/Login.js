@@ -54,6 +54,11 @@ const StyledButton = styled.button`
   box-sizing: border-box;
 `;
 
+const StyledError = styled.p`
+  display: flex;
+  flex-direction: column;
+`;
+
 const Login = () => {
   const [form, setForm] = useState({
     username: "",
@@ -125,6 +130,8 @@ const Login = () => {
           <StyledButton>Login</StyledButton>
         </StyledForm>
       </StyledFormWrapper>
+      <StyledError>{loginError.username}</StyledError>
+      <StyledError>{loginError.password}</StyledError>
     </div>
   );
 };
