@@ -4,6 +4,9 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import PlantCard from "./PlantCard";
 import styled from "styled-components";
 
+// need to finish add the jsx for the search bar and test that my helper functions are
+// working appropriately to display the plant that was searched for
+
 const StyledTitle = styled.h1`
   color: black;
   display: flex;
@@ -30,6 +33,7 @@ const StyledCardContainer = styled.div`
 
 const Dashboard = () => {
   const [plants, setPlants] = useState([]);
+  const [searchItem, setSearchItem] = useState("");
   const user_id = localStorage.getItem("user_id");
   const { push } = useHistory();
 
@@ -42,6 +46,14 @@ const Dashboard = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const handleSearch = (e) => {
+    setSearchItem(e.target.value);
+    const searchedPlant = plants.map((plant) => {
+      return plant.nickname === searchItem;
+    });
+    setPlants(searchedPlant);
+  };
 
   const handleClick = () => {
     push("/dashboard/add");
