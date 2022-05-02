@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import styled from "styled-components";
+import AddPlantFormSchema from "../validations/AddPlantFormSchema";
+import * as Yup from "yup";
 
 const StyledFormContainer = styled.div`
   background: #008080;
@@ -45,6 +47,14 @@ const StyledButton = styled.button`
   font-size: 1em;
 `;
 
+const StyledErrors = styled.p`
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
+  font-size: 14px;
+  color: #dc143c;
+`;
+
 const AddPlant = () => {
   const user_id = localStorage.getItem("user_id");
   const { push } = useHistory();
@@ -55,7 +65,32 @@ const AddPlant = () => {
     user_id: user_id,
   });
 
+  const [inputError, setInputError] = useState({
+    nickname: "",
+    species: "",
+    h20_frequency: "",
+  });
+
+  const validate = (name, value) => {
+    Yup.reach(AddPlantFormSchema, name)
+      .validate(value)
+      .then(() => {
+        setInputError({
+          ...inputError,
+          [name]: "",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        setInputError({
+          ...inputError,
+          [name]: err.errors[0],
+        });
+      });
+  };
+
   const handleChanges = (e) => {
+    validate(e.target.name, e.target.value);
     setNewPlant({
       ...newPlant,
       [e.target.name]: e.target.value,
@@ -86,6 +121,7 @@ const AddPlant = () => {
               value={newPlant.nickname}
               onChange={handleChanges}
             />
+            <StyledErrors>{inputError.nickname}</StyledErrors>
           </StyledLabel>
           <StyledLabel>
             Species:
@@ -95,6 +131,7 @@ const AddPlant = () => {
               value={newPlant.species}
               onChange={handleChanges}
             />
+            <StyledErrors>{inputError.species}</StyledErrors>
           </StyledLabel>
           <StyledLabel>
             h20 Frequency:
@@ -104,6 +141,7 @@ const AddPlant = () => {
               value={newPlant.h20_frequency}
               onChange={handleChanges}
             />
+            <StyledErrors>{inputError.h20_frequency}</StyledErrors>
           </StyledLabel>
           <StyledButton>Add Plant</StyledButton>
         </StyledForm>
