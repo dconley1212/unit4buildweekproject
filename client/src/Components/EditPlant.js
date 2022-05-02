@@ -2,10 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
-//need to create the get by id endpoint on the backend in order to hit the endpoint for
-// the useEffect hook to populate the forms and then you can hit the put endpoint to
-//update the plant info when the click submit
-
 const EditPlant = () => {
   const user_id = localStorage.getItem("user_id");
   const { plant_id } = useParams();

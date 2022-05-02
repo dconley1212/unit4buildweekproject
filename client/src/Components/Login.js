@@ -57,7 +57,7 @@ const StyledButton = styled.button`
 const StyledError = styled.p`
   display: flex;
   flex-direction: column;
-  margin: 5px 0px;
+  margin: 10px 0px;
   font-size: 14px;
   color: #dc143c;
 `;
@@ -119,6 +119,7 @@ const Login = () => {
               value={form.username}
               onChange={handleChange}
             ></StyledInput>
+            <StyledError>{loginError.username}</StyledError>
           </label>
           <label>
             Password:
@@ -129,9 +130,8 @@ const Login = () => {
               value={form.password}
               onChange={handleChange}
             ></StyledInput>
+            <StyledError>{loginError.password}</StyledError>
           </label>
-          <StyledError>{loginError.username}</StyledError>
-          <StyledError>{loginError.password}</StyledError>
           <StyledButton>Login</StyledButton>
         </StyledForm>
       </StyledFormWrapper>
