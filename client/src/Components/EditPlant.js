@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import AddPlantFormSchema from "../validations/AddPlantFormSchema";
+import * as Yup from "yup";
 
 const EditPlant = () => {
   const user_id = localStorage.getItem("user_id");
@@ -11,6 +13,12 @@ const EditPlant = () => {
     species: "",
     h20_frequency: "",
     user_id: user_id,
+  });
+
+  const [editErrors, setEditErrors] = useState({
+    nickname: "",
+    species: "",
+    h20_frequency: "",
   });
 
   useEffect(() => {
@@ -24,7 +32,26 @@ const EditPlant = () => {
       });
   }, []);
 
+  const validate = (name, value) => {
+    Yup.reach(AddPlantFormSchema, name)
+      .validate(value)
+      .then(() => {
+        setEditErrors({
+          ...editErrors,
+          [name]: "",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        setEditErrors({
+          ...editErrors,
+          [name]: err.errors[0],
+        });
+      });
+  };
+
   const handleChanges = (e) => {
+    validate(e.target.name, e.target.value);
     e.preventDefault();
     setEditedPlant({
       ...editedPlant,
@@ -56,6 +83,7 @@ const EditPlant = () => {
             value={editedPlant.nickname}
             onChange={handleChanges}
           />
+          <p>{editErrors.nickname}</p>
         </label>
         <label>
           Species:
@@ -65,6 +93,7 @@ const EditPlant = () => {
             value={editedPlant.species}
             onChange={handleChanges}
           />
+          <p>{editErrors.species}</p>
         </label>
         <label>
           h20 Frequency:
@@ -74,6 +103,7 @@ const EditPlant = () => {
             value={editedPlant.h20_frequency}
             onChange={handleChanges}
           />
+          <p>{editErrors.h20_frequency}</p>
         </label>
         <button>Edit Plant</button>
       </form>
