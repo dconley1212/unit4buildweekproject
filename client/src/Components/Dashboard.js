@@ -49,9 +49,11 @@ const Dashboard = () => {
 
   const handleSearch = (e) => {
     setSearchItem(e.target.value);
+    console.log(plants);
     const searchedPlant = plants.map((plant) => {
-      return plant.nickname === searchItem;
+      return plant.nickname.toLowerCase().includes(searchItem);
     });
+
     setPlants(searchedPlant);
   };
 
@@ -62,6 +64,17 @@ const Dashboard = () => {
   return (
     <div>
       <StyledTitle>My Plants:</StyledTitle>
+      <form>
+        <label htmlFor="search-bar">
+          <input
+            type="search"
+            placeholder="Search plant by name"
+            value={searchItem}
+            onChange={handleSearch}
+          />
+        </label>
+        <button>Search</button>
+      </form>
       <StyledAddButton onClick={handleClick}>Add a Plant</StyledAddButton>
       <StyledCardContainer>
         {plants.map((plant) => {
