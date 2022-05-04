@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import PlantCard from "./PlantCard";
 import styled from "styled-components";
+import SearchBar from "./SearchBar";
 
 // need to finish add the jsx for the search bar and test that my helper functions are
 // working appropriately to display the plant that was searched for
@@ -33,7 +34,6 @@ const StyledCardContainer = styled.div`
 
 const Dashboard = () => {
   const [plants, setPlants] = useState([]);
-  const [searchItem, setSearchItem] = useState("");
   const user_id = localStorage.getItem("user_id");
   const { push } = useHistory();
 
@@ -42,19 +42,15 @@ const Dashboard = () => {
       .get(`/plants/${user_id}`)
       .then((res) => {
         setPlants(res.data);
-        console.log(res);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  const handleSearch = (e) => {
-    setSearchItem(e.target.value);
-    console.log(plants);
-    const searchedPlant = plants.map((plant) => {
-      return plant.nickname.toLowerCase().includes(searchItem);
+  const search = (item) => {
+    const searchedItem = plants.filter((plant) => {
+      return plant.nickname.toLowerCase().includes(item.toLowerCase());
     });
-
-    setPlants(searchedPlant);
+    setPlants(searchedItem);
   };
 
   const handleClick = () => {
@@ -64,17 +60,7 @@ const Dashboard = () => {
   return (
     <div>
       <StyledTitle>My Plants:</StyledTitle>
-      <form>
-        <label htmlFor="search-bar">
-          <input
-            type="search"
-            placeholder="Search plant by name"
-            value={searchItem}
-            onChange={handleSearch}
-          />
-        </label>
-        <button>Search</button>
-      </form>
+      <SearchBar search={search}></SearchBar>
       <StyledAddButton onClick={handleClick}>Add a Plant</StyledAddButton>
       <StyledCardContainer>
         {plants.map((plant) => {
