@@ -46,7 +46,15 @@ const Dashboard = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const search = (item) => {
+  const search = async (item) => {
+    if (!item)
+      return axiosWithAuth()
+        .get(`/plants/${user_id}`)
+        .then((res) => {
+          setPlants(res.data);
+        })
+        .catch((err) => console.log(err));
+
     const searchedItem = plants.filter((plant) => {
       return plant.nickname.toLowerCase().includes(item.toLowerCase());
     });

@@ -8,6 +8,11 @@ const SearchBar = (props) => {
     props.search(searchItem);
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    props.search(searchItem);
+  };
+
   return (
     <div>
       <form>
@@ -19,7 +24,7 @@ const SearchBar = (props) => {
             onChange={handleSearch}
           />
         </label>
-        <button>Search</button>
+        <button onClick={handleClick}>Search</button>
       </form>
     </div>
   );
