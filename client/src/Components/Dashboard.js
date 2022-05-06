@@ -5,8 +5,8 @@ import PlantCard from "./PlantCard";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
 
-// need to finish add the jsx for the search bar and test that my helper functions are
-// working appropriately to display the plant that was searched for
+// added the search functionality, and it is working, but I wish I could get it to
+// rerender the plants state after deleting a search without having to press enter
 
 const StyledTitle = styled.h1`
   color: black;
@@ -43,20 +43,12 @@ const Dashboard = () => {
       .get(`/plants/${user_id}`)
       .then((res) => {
         setPlants(res.data);
+        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
   const search = async (item) => {
-    // if (!item) {
-    //   return axiosWithAuth()
-    //     .get(`/plants/${user_id}`)
-    //     .then((res) => {
-    //       setPlants(res.data);
-    //     })
-    //     .catch((err) => console.log(err));
-    // }
-
     const searchedItem = plants.filter((plant) => {
       return plant.nickname.toLowerCase().includes(item.toLowerCase());
     });
@@ -66,14 +58,14 @@ const Dashboard = () => {
   const handleClick = () => {
     push("/dashboard/add");
   };
-
+  console.log(filteredPlants);
   return (
     <div>
       <StyledTitle>My Plants:</StyledTitle>
       <SearchBar search={search}></SearchBar>
       <StyledAddButton onClick={handleClick}>Add a Plant</StyledAddButton>
       <StyledCardContainer>
-        {!filteredPlants
+        {filteredPlants.length === 0
           ? plants.map((plant) => {
               return <PlantCard plant={plant} />;
             })
