@@ -34,6 +34,7 @@ const StyledCardContainer = styled.div`
 
 const Dashboard = () => {
   const [plants, setPlants] = useState([]);
+  const [filteredPlants, setFilteredPlants] = useState([]);
   const user_id = localStorage.getItem("user_id");
   const { push } = useHistory();
 
@@ -47,18 +48,19 @@ const Dashboard = () => {
   }, []);
 
   const search = async (item) => {
-    if (!item)
-      return axiosWithAuth()
-        .get(`/plants/${user_id}`)
-        .then((res) => {
-          setPlants(res.data);
-        })
-        .catch((err) => console.log(err));
+    // if (!item) {
+    //   return axiosWithAuth()
+    //     .get(`/plants/${user_id}`)
+    //     .then((res) => {
+    //       setPlants(res.data);
+    //     })
+    //     .catch((err) => console.log(err));
+    // }
 
     const searchedItem = plants.filter((plant) => {
       return plant.nickname.toLowerCase().includes(item.toLowerCase());
     });
-    setPlants(searchedItem);
+    setFilteredPlants(searchedItem);
   };
 
   const handleClick = () => {
@@ -71,9 +73,13 @@ const Dashboard = () => {
       <SearchBar search={search}></SearchBar>
       <StyledAddButton onClick={handleClick}>Add a Plant</StyledAddButton>
       <StyledCardContainer>
-        {plants.map((plant) => {
-          return <PlantCard plant={plant} />;
-        })}
+        {!filteredPlants
+          ? plants.map((plant) => {
+              return <PlantCard plant={plant} />;
+            })
+          : filteredPlants.map((plant) => {
+              return <PlantCard plant={plant} />;
+            })}
       </StyledCardContainer>
     </div>
   );
