@@ -1,4 +1,17 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+
+const StyledForm = styled.form`
+  position: relative;
+  left: 40px;
+  border: 1px solid #dedede;
+  border-radius: 20px;
+`;
+
+const StyledSearch = styled.input`
+  padding: 15px 100px;
+  border-radius: 10px;
+`;
 
 const SearchBar = (props) => {
   const [searchItem, setSearchItem] = useState("");
@@ -15,9 +28,9 @@ const SearchBar = (props) => {
 
   return (
     <div>
-      <form>
+      <StyledForm>
         <label htmlFor="search-bar">
-          <input
+          <StyledSearch
             type="search"
             placeholder="Search plant by name"
             value={searchItem}
@@ -25,7 +38,7 @@ const SearchBar = (props) => {
           />
         </label>
         <button onClick={handleClick}>Search</button>
-      </form>
+      </StyledForm>
     </div>
   );
 };

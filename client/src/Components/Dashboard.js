@@ -16,11 +16,13 @@ const StyledTitle = styled.h1`
 `;
 
 const StyledAddButton = styled.button`
-  display: flex;
+  position: relative;
+  left: 70rem;
+  font-size: 1rem;
   background-color: black;
   color: white;
-  padding: 0.5em 0.75em;
-  border-radius: 0.4em;
+  padding: 1em 3em;
+  border-radius: 0.7em;
   margin: 0.25rem 0rem 1.5rem 1.5rem;
   cursor: pointer;
 `;
