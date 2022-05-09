@@ -29,6 +29,7 @@ const StyledAddButton = styled.button`
 
 const StyledCardContainer = styled.div`
   display: grid;
+  margin: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
   align-items: flex-start;
