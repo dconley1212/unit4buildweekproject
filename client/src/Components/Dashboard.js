@@ -16,6 +16,8 @@ const StyledTitle = styled.h1`
 `;
 
 const StyledAddButton = styled.button`
+  position: relative;
+  right: 40px;
   font-size: 1rem;
   background-color: black;
   color: white;
@@ -36,7 +38,7 @@ const StyledCardContainer = styled.div`
 const StyledUpperDiv = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 const Dashboard = () => {

@@ -3,6 +3,24 @@ import { useParams, useHistory } from "react-router-dom";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import AddPlantFormSchema from "../validations/AddPlantFormSchema";
 import * as Yup from "yup";
+import styled from "styled-components";
+
+const StyledEditContainer = styled.div`
+  background: #adff2f;
+  margin: 0px;
+  padding: 200px;
+`;
+
+const StyledEditForm = styled.form`
+  background: #fffff0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px solid #dedede;
+  border-radius: 20px;
+  padding: 40px 50px;
+  max-width: 700px;
+`;
 
 const EditPlant = () => {
   const user_id = localStorage.getItem("user_id");
@@ -73,8 +91,8 @@ const EditPlant = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <StyledEditContainer>
+      <StyledEditForm onSubmit={handleSubmit}>
         <label>
           Nickname:
           <input
@@ -106,8 +124,8 @@ const EditPlant = () => {
           <p>{editErrors.h20_frequency}</p>
         </label>
         <button>Edit Plant</button>
-      </form>
-    </div>
+      </StyledEditForm>
+    </StyledEditContainer>
   );
 };
 

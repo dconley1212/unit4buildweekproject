@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const StyledForm = styled.form`
+  position: relative;
+  left: 40px;
   width: 50%;
   border-radius: 20px;
 `;
@@ -14,6 +16,7 @@ const StyledSearch = styled.input`
 const StyledSearchButton = styled.button`
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   margin-top: 0.3em;
   margin-left: 0.5rem;
   padding: 10px 60px;

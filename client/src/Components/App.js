@@ -8,10 +8,7 @@ import AddPlant from "./AddPlant";
 import EditPlant from "./EditPlant";
 import PrivateRoute from "./PrivateRoute";
 
-//lets create state errors next for login, register, add plant, or edit plant
-// you need to create different formschema components for each validation that you plan to use
-// so create validation folder and create your different formschemas and add them
-// to each different form
+// need to do the css for the edit plant component next
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -84,6 +81,7 @@ function App() {
         <header>
           <StyledLinks>
             <StyledNavLink to="/">Home</StyledNavLink>
+            <StyledNavLink to="/dashboard">Dashboard</StyledNavLink>
             <StyledNavLink to="/login">Login</StyledNavLink>
             <StyledNavLink to="/login" onClick={handleLogout}>
               Logout
