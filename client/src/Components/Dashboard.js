@@ -16,12 +16,10 @@ const StyledTitle = styled.h1`
 `;
 
 const StyledAddButton = styled.button`
-  position: relative;
-  left: 70rem;
   font-size: 1rem;
   background-color: black;
   color: white;
-  padding: 1em 3em;
+  padding: 1em 2em;
   border-radius: 0.7em;
   margin: 0.25rem 0rem 1.5rem 1.5rem;
   cursor: pointer;
@@ -33,6 +31,12 @@ const StyledCardContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
   align-items: flex-start;
+`;
+
+const StyledUpperDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 `;
 
 const Dashboard = () => {
@@ -65,8 +69,10 @@ const Dashboard = () => {
   return (
     <div>
       <StyledTitle>My Plants:</StyledTitle>
-      <SearchBar search={search}></SearchBar>
-      <StyledAddButton onClick={handleClick}>Add a Plant</StyledAddButton>
+      <StyledUpperDiv>
+        <SearchBar search={search}></SearchBar>
+        <StyledAddButton onClick={handleClick}>Add a Plant</StyledAddButton>
+      </StyledUpperDiv>
       <StyledCardContainer>
         {filteredPlants.length === 0
           ? plants.map((plant) => {

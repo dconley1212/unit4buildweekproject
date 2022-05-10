@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const StyledForm = styled.form`
-  position: relative;
-  left: 40px;
   width: 50%;
-  border: 1px solid #dedede;
   border-radius: 20px;
 `;
 
