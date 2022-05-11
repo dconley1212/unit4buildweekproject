@@ -92,6 +92,7 @@ function App() {
       </StyledHeader>
       <Switch>
         <PrivateRoute path="/update/:user_id/:plant_id">
+          <GlobalStyle />
           <EditPlant />
         </PrivateRoute>
         <PrivateRoute path="/dashboard/add">

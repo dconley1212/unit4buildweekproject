@@ -17,6 +17,7 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   margin: 0 auto;
   max-width: 700px;
   padding: 40px 50px;
@@ -28,6 +29,7 @@ const StyledInput = styled.input`
   box-sizing: border-box;
   padding: 10px;
   width: 100%;
+  margin-top: 0.5rem;
 `;
 const StyledLabel = styled.label`
   color: black;
@@ -36,6 +38,7 @@ const StyledLabel = styled.label`
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 1.5rem;
+  width: 80%;
 `;
 
 const StyledButton = styled.button`

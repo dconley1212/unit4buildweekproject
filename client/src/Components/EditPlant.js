@@ -6,8 +6,6 @@ import * as Yup from "yup";
 import styled from "styled-components";
 
 const StyledEditContainer = styled.div`
-  background: #adff2f;
-  margin: 0px;
   padding: 200px;
 `;
 
@@ -16,10 +14,27 @@ const StyledEditForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   border: 1px solid #dedede;
   border-radius: 20px;
+  margin: 0 auto;
   padding: 40px 50px;
   max-width: 700px;
+`;
+
+const StyledEditLabel = styled.label`
+  margin-bottom: 1.5rem;
+  width: 100%;
+  display: block;
+`;
+
+const StyledEditInput = styled.input`
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0.5rem;
 `;
 
 const EditPlant = () => {
@@ -93,36 +108,36 @@ const EditPlant = () => {
   return (
     <StyledEditContainer>
       <StyledEditForm onSubmit={handleSubmit}>
-        <label>
+        <StyledEditLabel>
           Nickname:
-          <input
+          <StyledEditInput
             type="text"
             name="nickname"
             value={editedPlant.nickname}
             onChange={handleChanges}
           />
           <p>{editErrors.nickname}</p>
-        </label>
-        <label>
+        </StyledEditLabel>
+        <StyledEditLabel>
           Species:
-          <input
+          <StyledEditInput
             type="text"
             name="species"
             value={editedPlant.species}
             onChange={handleChanges}
           />
           <p>{editErrors.species}</p>
-        </label>
-        <label>
+        </StyledEditLabel>
+        <StyledEditLabel>
           h20 Frequency:
-          <input
+          <StyledEditInput
             type="text"
             name="h20_frequency"
             value={editedPlant.h20_frequency}
             onChange={handleChanges}
           />
           <p>{editErrors.h20_frequency}</p>
-        </label>
+        </StyledEditLabel>
         <button>Edit Plant</button>
       </StyledEditForm>
     </StyledEditContainer>
