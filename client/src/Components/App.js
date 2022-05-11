@@ -96,6 +96,7 @@ function App() {
           <EditPlant />
         </PrivateRoute>
         <PrivateRoute path="/dashboard/add">
+          <GlobalStyle />
           <AddPlant />
         </PrivateRoute>
         <PrivateRoute path="/dashboard">

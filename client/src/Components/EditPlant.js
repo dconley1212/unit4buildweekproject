@@ -24,8 +24,9 @@ const StyledEditForm = styled.form`
 
 const StyledEditLabel = styled.label`
   margin-bottom: 1.5rem;
-  width: 100%;
+  width: 80%;
   display: block;
+  color: black;
 `;
 
 const StyledEditInput = styled.input`
@@ -35,6 +36,22 @@ const StyledEditInput = styled.input`
   box-sizing: border-box;
   width: 100%;
   margin-top: 0.5rem;
+`;
+
+const StyledEditButton = styled.button`
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 1em 2em;
+  background: #8fbc8f;
+  font-size: 1em;
+  color: black;
+  width: 40%;
+`;
+
+const StyledEditErrors = styled.p`
+  color: #dc143c;
+  font-size: 14px;
+  margin-bottom: 0;
 `;
 
 const EditPlant = () => {
@@ -116,7 +133,7 @@ const EditPlant = () => {
             value={editedPlant.nickname}
             onChange={handleChanges}
           />
-          <p>{editErrors.nickname}</p>
+          <StyledEditErrors>{editErrors.nickname}</StyledEditErrors>
         </StyledEditLabel>
         <StyledEditLabel>
           Species:
@@ -126,7 +143,7 @@ const EditPlant = () => {
             value={editedPlant.species}
             onChange={handleChanges}
           />
-          <p>{editErrors.species}</p>
+          <StyledEditErrors>{editErrors.species}</StyledEditErrors>
         </StyledEditLabel>
         <StyledEditLabel>
           h20 Frequency:
@@ -136,9 +153,9 @@ const EditPlant = () => {
             value={editedPlant.h20_frequency}
             onChange={handleChanges}
           />
-          <p>{editErrors.h20_frequency}</p>
+          <StyledEditErrors>{editErrors.h20_frequency}</StyledEditErrors>
         </StyledEditLabel>
-        <button>Edit Plant</button>
+        <StyledEditButton>Submit</StyledEditButton>
       </StyledEditForm>
     </StyledEditContainer>
   );

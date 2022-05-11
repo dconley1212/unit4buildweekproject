@@ -6,7 +6,6 @@ import AddPlantFormSchema from "../validations/AddPlantFormSchema";
 import * as Yup from "yup";
 
 const StyledFormContainer = styled.div`
-  background: #008080;
   padding: 200px;
 `;
 
@@ -42,11 +41,12 @@ const StyledLabel = styled.label`
 `;
 
 const StyledButton = styled.button`
-  padding: 1em;
+  padding: 1em 2em;
   border-radius: 10em;
+  width: 40%;
   margin: 1.5rem;
-  color: white;
-  background: #008080;
+  color: black;
+  background: #8fbc8f;
   font-size: 1em;
 `;
 
