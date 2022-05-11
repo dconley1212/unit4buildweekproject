@@ -21,10 +21,15 @@ const StyledAddButton = styled.button`
   font-size: 1rem;
   background-color: black;
   color: white;
-  padding: 1em 2em;
-  border-radius: 0.7em;
+  padding: 0.2em 3em;
+  border-radius: 0.8em;
   margin: 0.25rem 0rem 1.5rem 1.5rem;
   cursor: pointer;
+  &:hover {
+    background: silver;
+    color: black;
+    transition: 0.2s ease-in-out;
+  }
 `;
 
 const StyledCardContainer = styled.div`
@@ -73,7 +78,7 @@ const Dashboard = () => {
       <StyledTitle>My Plants:</StyledTitle>
       <StyledUpperDiv>
         <SearchBar search={search}></SearchBar>
-        <StyledAddButton onClick={handleClick}>Add a Plant</StyledAddButton>
+        <StyledAddButton onClick={handleClick}>Add Plant Card</StyledAddButton>
       </StyledUpperDiv>
       <StyledCardContainer>
         {filteredPlants.length === 0
