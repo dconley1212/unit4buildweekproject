@@ -8,7 +8,10 @@ import AddPlant from "./AddPlant";
 import EditPlant from "./EditPlant";
 import PrivateRoute from "./PrivateRoute";
 
-// need to do the css for the edit plant component next
+// Things to contribute before deploying, the last one I could deploy first and add it later
+//1. Add a footer to each web page
+//2. Update styling so you have the correct units to make it responsive and look better
+//3. Figure out reminder capability/ adding a picture to the backend
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -71,6 +74,15 @@ const StyledActionParagraph = styled.p`
   margin: 0px;
 `;
 
+const StyledFooter = styled.footer`
+  background: #000000;
+  color: white;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`;
+
 function App() {
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -78,17 +90,15 @@ function App() {
   return (
     <div>
       <StyledHeader>
-        <header>
-          <StyledLinks>
-            <StyledNavLink to="/">Home</StyledNavLink>
-            <StyledNavLink to="/dashboard">Dashboard</StyledNavLink>
-            <StyledNavLink to="/login">Login</StyledNavLink>
-            <StyledNavLink to="/login" onClick={handleLogout}>
-              Logout
-            </StyledNavLink>
-            <StyledNavLink to="/register">Register</StyledNavLink>
-          </StyledLinks>
-        </header>
+        <StyledLinks>
+          <StyledNavLink to="/">Home</StyledNavLink>
+          <StyledNavLink to="/dashboard">Dashboard</StyledNavLink>
+          <StyledNavLink to="/login">Login</StyledNavLink>
+          <StyledNavLink to="/login" onClick={handleLogout}>
+            Logout
+          </StyledNavLink>
+          <StyledNavLink to="/register">Register</StyledNavLink>
+        </StyledLinks>
       </StyledHeader>
       <Switch>
         <PrivateRoute path="/update/:user_id/:plant_id">
@@ -121,6 +131,11 @@ function App() {
           </StyledActionParagraph>
         </Route>
       </Switch>
+      <StyledFooter>
+        <h4>Questions?</h4>
+        <p>Contact: dconley1989@gmail.com</p>
+        <p>Developer: Dave Conley</p>
+      </StyledFooter>
     </div>
   );
 }
