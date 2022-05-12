@@ -11,7 +11,8 @@ import PrivateRoute from "./PrivateRoute";
 // Things to contribute before deploying, the last one I could deploy first and add it later
 //1. Add a footer to each web page
 //2. Update styling so you have the correct units to make it responsive and look better
-//3. Figure out reminder capability/ adding a picture to the backend
+//3.Footer should link to contact page and about page
+//4. Figure out reminder capability/ adding a picture to the backend and how to send a reminder
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -64,16 +65,6 @@ const StyledSlogan = styled.h2`
   margin: 0px;
 `;
 
-const StyledActionParagraph = styled.p`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  color: #000000;
-  margin: 0px;
-`;
-
 const StyledFooter = styled.footer`
   background: #000000;
   color: white;
@@ -81,6 +72,15 @@ const StyledFooter = styled.footer`
   left: 0;
   right: 0;
   bottom: 0;
+`;
+
+const StyledFooterTitle = styled.h4`
+  margin-left: 3rem;
+  text-decoration: underline;
+`;
+
+const StyledFooterParagraph = styled.p`
+  margin-left: 3rem;
 `;
 
 function App() {
@@ -126,15 +126,14 @@ function App() {
           <StyledTitle>Healthy Plants</StyledTitle>
           <StyledSlogan>Find your inner green thumb!</StyledSlogan>
           <Login />
-          <StyledActionParagraph>
-            Register or Login for tips.
-          </StyledActionParagraph>
         </Route>
       </Switch>
       <StyledFooter>
-        <h4>Questions?</h4>
-        <p>Contact: dconley1989@gmail.com</p>
-        <p>Developer: Dave Conley</p>
+        <StyledFooterTitle>Questions:</StyledFooterTitle>
+        <StyledFooterParagraph>
+          Contact: dconley1989@gmail.com
+        </StyledFooterParagraph>
+        <StyledFooterParagraph>Developer: Dave Conley</StyledFooterParagraph>
       </StyledFooter>
     </div>
   );
