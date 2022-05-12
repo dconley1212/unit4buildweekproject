@@ -30,18 +30,18 @@ body {
 const StyledHeader = styled.header`
   display: flex;
   flex-direction: row-reverse;
-  padding: 1.5%;
+  padding: 1.5rem;
   background-color: #000000;
 `;
 
 const StyledLinks = styled.div`
   display: block;
-  padding: 5px;
+  padding: 0.3rem;
 `;
 
 const StyledNavLink = styled(Link)`
-  padding: 10px;
-  margin: 10px;
+  padding: 0.6rem;
+  margin: 0.6rem;
   color: #f5fffa;
   font-size: 1.3rem;
 `;

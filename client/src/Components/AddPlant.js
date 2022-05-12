@@ -6,27 +6,27 @@ import AddPlantFormSchema from "../validations/AddPlantFormSchema";
 import * as Yup from "yup";
 
 const StyledFormContainer = styled.div`
-  padding: 200px;
+  height: 100%;
 `;
 
 const StyledForm = styled.form`
   background: #fffff0;
   border: 1px solid #dedede;
-  border-radius: 20px;
+  border-radius: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin: 0 auto;
-  max-width: 700px;
-  padding: 40px 50px;
+  margin: 8rem auto;
+  max-width: 40%;
+  padding: 1.5rem 1.5rem;
 `;
 
 const StyledInput = styled.input`
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 1.5em;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 0.7rem;
   width: 100%;
   margin-top: 0.5rem;
 `;
@@ -34,17 +34,17 @@ const StyledLabel = styled.label`
   color: black;
   display: block;
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   width: 80%;
 `;
 
 const StyledButton = styled.button`
   padding: 1em 2em;
-  border-radius: 10em;
+  border-radius: 1em;
   width: 40%;
-  margin: 1.5rem;
+  margin: 1em;
   color: black;
   background: #8fbc8f;
   font-size: 1em;
@@ -53,8 +53,8 @@ const StyledButton = styled.button`
 const StyledErrors = styled.p`
   display: flex;
   flex-direction: column;
-  margin: 10px 0px;
-  font-size: 14px;
+  margin: 0.6rem 0rem;
+  font-size: 0.9rem;
   color: #dc143c;
 `;
 

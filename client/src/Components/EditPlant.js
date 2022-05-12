@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import styled from "styled-components";
 
 const StyledEditContainer = styled.div`
-  padding: 200px;
+  height: 100%;
 `;
 
 const StyledEditForm = styled.form`
@@ -16,10 +16,10 @@ const StyledEditForm = styled.form`
   justify-content: space-around;
   align-items: center;
   border: 1px solid #dedede;
-  border-radius: 20px;
-  margin: 0 auto;
-  padding: 40px 50px;
-  max-width: 700px;
+  border-radius: 1.2rem;
+  margin: 8rem auto;
+  padding: 1.5rem;
+  max-width: 40%;
 `;
 
 const StyledEditLabel = styled.label`
@@ -32,7 +32,7 @@ const StyledEditLabel = styled.label`
 const StyledEditInput = styled.input`
   padding: 10px;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 0.7rem;
   box-sizing: border-box;
   width: 100%;
   margin-top: 0.5rem;
@@ -40,7 +40,7 @@ const StyledEditInput = styled.input`
 
 const StyledEditButton = styled.button`
   border: 1px solid black;
-  border-radius: 15px;
+  border-radius: 1em;
   padding: 1em 2em;
   background: #8fbc8f;
   font-size: 1em;
@@ -50,7 +50,7 @@ const StyledEditButton = styled.button`
 
 const StyledEditErrors = styled.p`
   color: #dc143c;
-  font-size: 14px;
+  font-size: 0.9rem;
   margin-bottom: 0;
 `;
 
