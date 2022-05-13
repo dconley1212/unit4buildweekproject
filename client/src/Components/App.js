@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Link, Switch, NavLink } from "react-router-dom";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Register from "./Register";
@@ -11,7 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 // Things to contribute before deploying, the last one I could deploy first and add it later
 //1. Add a footer to each web page
 //2. Update styling so you have the correct units to make it responsive and look better
-//3.Footer should link to contact page and about page
+//3. Footer should link to contact page and about page
 //4. Figure out reminder capability/ adding a picture to the backend and how to send a reminder
 
 const GlobalStyle = createGlobalStyle`

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import styled, { css } from "styled-components";
 import getPayloadData from "../utils/tokenPayload";
@@ -60,6 +60,14 @@ const StyledError = styled.p`
   margin: 10px 0px;
   font-size: 14px;
   color: #dc143c;
+`;
+
+const StyledRegisterDiv = styled.div`
+  display: flex;
+`;
+
+const StyledRegisterLink = styled(Link)`
+  margin: 1rem 0.5rem;
 `;
 
 const Login = () => {
@@ -133,6 +141,12 @@ const Login = () => {
             <StyledError>{loginError.password}</StyledError>
           </label>
           <StyledButton>Login</StyledButton>
+          <StyledRegisterDiv>
+            <p>Don't have an account?</p>{" "}
+            <StyledRegisterLink to="/register">
+              Register Here!
+            </StyledRegisterLink>
+          </StyledRegisterDiv>
         </StyledForm>
       </StyledFormWrapper>
     </div>
