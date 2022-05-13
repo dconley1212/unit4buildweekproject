@@ -7,6 +7,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import AddPlant from "./AddPlant";
 import EditPlant from "./EditPlant";
 import PrivateRoute from "./PrivateRoute";
+import Contact from "./Contact";
 
 // Things to contribute before deploying, the last one I could deploy first and add it later
 //1. Add a footer to each web page
@@ -62,7 +63,7 @@ const StyledSlogan = styled.h2`
   align-items: center;
   font-size: 1.7rem;
   color: #000000;
-  margin: 0px;
+  margin: 1rem;
 `;
 
 const StyledFooter = styled.footer`
@@ -72,14 +73,12 @@ const StyledFooter = styled.footer`
   left: 0;
   right: 0;
   bottom: 0;
+  min-height: 10vh;
 `;
 
-const StyledFooterTitle = styled.h4`
-  margin-left: 3rem;
-  text-decoration: underline;
-`;
-
-const StyledFooterParagraph = styled.p`
+const StyledFooterLinks = styled.div`
+  display: flex;
+  padding: 0.3rem;
   margin-left: 3rem;
 `;
 
@@ -109,6 +108,10 @@ function App() {
           <GlobalStyle />
           <AddPlant />
         </PrivateRoute>
+        <Route path="/contact">
+          <GlobalStyle />
+          <Contact />
+        </Route>
         <PrivateRoute path="/dashboard">
           <GlobalStyle />
           <Dashboard />
@@ -129,11 +132,10 @@ function App() {
         </Route>
       </Switch>
       <StyledFooter>
-        <StyledFooterTitle>Questions:</StyledFooterTitle>
-        <StyledFooterParagraph>
-          Contact: dconley1989@gmail.com
-        </StyledFooterParagraph>
-        <StyledFooterParagraph>Developer: Dave Conley</StyledFooterParagraph>
+        <StyledFooterLinks>
+          <StyledNavLink to="/contact">Contact</StyledNavLink>
+          <StyledNavLink>About</StyledNavLink>
+        </StyledFooterLinks>
       </StyledFooter>
     </div>
   );
