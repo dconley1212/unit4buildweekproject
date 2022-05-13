@@ -5,20 +5,29 @@ const StyledContactContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid black;
+`;
+
+const StyledContactTitle = styled.h2`
+  margin: 2rem 3rem;
+`;
+
+const StyledContactParagraphs = styled.p`
+  margin: 1rem 3rem;
+  color: black;
 `;
 
 const Contact = () => {
   return (
     <StyledContactContainer>
-      <h2>Questions?</h2>
-      <p>The lead developer is Dave Conley.</p>
-      <p>
-        He can be reached by contacting him with any of the methods provided
-        below
-      </p>
-      <ul>Email: dconley1989@gmail.com</ul>
-      <ul> Phone: 617-909-2303</ul>
+      <StyledContactTitle>Questions? Something went wrong?</StyledContactTitle>
+      <StyledContactParagraphs>
+        Contact Dave Conley, who is the Lead Developer and idiot that made this
+        app.
+      </StyledContactParagraphs>
+      <StyledContactParagraphs>
+        Email: dconley1989@gmail.com
+      </StyledContactParagraphs>
+      <StyledContactParagraphs> Phone: 617-909-2303</StyledContactParagraphs>
     </StyledContactContainer>
   );
 };
