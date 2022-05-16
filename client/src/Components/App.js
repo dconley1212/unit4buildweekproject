@@ -63,7 +63,7 @@ const StyledSlogan = styled.h2`
   align-items: center;
   font-size: 1.7rem;
   color: #000000;
-  margin: 1rem;
+  margin: 0.2rem;
 `;
 
 const StyledFooter = styled.footer`
@@ -116,14 +116,14 @@ function App() {
           <GlobalStyle />
           <Dashboard />
         </PrivateRoute>
-        <PrivateRoute path="/register">
+        <Route path="/register">
           <GlobalStyle />
           <Register />
-        </PrivateRoute>
-        <PrivateRoute path="/login">
+        </Route>
+        <Route path="/login">
           <GlobalStyle />
           <Login />
-        </PrivateRoute>
+        </Route>
         <Route exact path="/">
           <GlobalStyle />
           <StyledTitle>Healthy Plants</StyledTitle>

@@ -17,10 +17,12 @@ const sharedStyles = css`
 `;
 
 const StyledFormWrapper = styled.div`
+  /* position: relative;
+  top: -4rem; */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 100%;
   padding: 0 10px;
 `;
 const StyledForm = styled.form`
@@ -28,6 +30,7 @@ const StyledForm = styled.form`
   flex-direction: column;
   width: 100%;
   max-width: 500px;
+  margin: 4rem;
   padding: 40px;
   background-color: #fff;
   border-radius: 15px;

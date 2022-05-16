@@ -21,8 +21,7 @@ const Contact = () => {
     <StyledContactContainer>
       <StyledContactTitle>Questions? Something went wrong?</StyledContactTitle>
       <StyledContactParagraphs>
-        Contact Dave Conley, who is the Lead Developer and idiot that made this
-        app.
+        Contact Dave Conley, who is the Lead Developer.
       </StyledContactParagraphs>
       <StyledContactParagraphs>
         Email: dconley1989@gmail.com
