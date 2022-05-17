@@ -8,12 +8,11 @@ import AddPlant from "./AddPlant";
 import EditPlant from "./EditPlant";
 import PrivateRoute from "./PrivateRoute";
 import Contact from "./Contact";
+import About from "./About";
 
 // Things to contribute before deploying, the last one I could deploy first and add it later
-//1. Add a footer to each web page
-//2. Update styling so you have the correct units to make it responsive and look better
-//3. Footer should link to contact page and about page
-//4. Figure out reminder capability/ adding a picture to the backend and how to send a reminder
+//1. Footer should link to contact page and about page
+//2. Figure out reminder capability/ adding a picture to the backend and how to send a reminder
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -108,6 +107,10 @@ function App() {
           <GlobalStyle />
           <AddPlant />
         </PrivateRoute>
+        <Route path="/about">
+          <GlobalStyle />
+          <About />
+        </Route>
         <Route path="/contact">
           <GlobalStyle />
           <Contact />
@@ -134,7 +137,7 @@ function App() {
       <StyledFooter>
         <StyledFooterLinks>
           <StyledNavLink to="/contact">Contact</StyledNavLink>
-          <StyledNavLink>About</StyledNavLink>
+          <StyledNavLink to="/about">About</StyledNavLink>
         </StyledFooterLinks>
       </StyledFooter>
     </div>

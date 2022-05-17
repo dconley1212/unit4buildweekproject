@@ -17,8 +17,6 @@ const sharedStyles = css`
 `;
 
 const StyledFormWrapper = styled.div`
-  /* position: relative;
-  top: -4rem; */
   display: flex;
   justify-content: center;
   align-items: center;
