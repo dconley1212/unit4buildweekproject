@@ -108,7 +108,6 @@ function App() {
           <AddPlant />
         </PrivateRoute>
         <Route path="/about">
-          <GlobalStyle />
           <About />
         </Route>
         <Route path="/contact">
