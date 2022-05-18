@@ -28,7 +28,7 @@ const StyledForm = styled.form`
   flex-direction: column;
   width: 100%;
   max-width: 500px;
-  margin: 4rem;
+  margin: 2rem 0rem;
   padding: 40px;
   background-color: #fff;
   border-radius: 15px;

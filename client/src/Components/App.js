@@ -8,6 +8,7 @@ import AddPlant from "./AddPlant";
 import EditPlant from "./EditPlant";
 import PrivateRoute from "./PrivateRoute";
 import Contact from "./Contact";
+import plantImg from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/annie-spratt-hX_hf2lPpUU-unsplash.jpg";
 import About from "./About";
 
 // Things to contribute before deploying, the last one I could deploy first and add it later
@@ -19,11 +20,14 @@ html {
     height: 100%
 }
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(to bottom, #8FBC8F, #3CB371);
+    font-family: sans-serif;
+    background: url(${plantImg});
     height: 100%;
     margin: 0;
+    padding: 0;
+    background-size: cover;
     color: #555;
+    background-repeat: no-repeat;
 }
 `;
 

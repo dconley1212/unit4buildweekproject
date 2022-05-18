@@ -2,7 +2,6 @@ import React from "react";
 import familyImage from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/DSC_9537 (2).jpg";
 import mountainBiking from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/IMG_1775.JPG";
 import skingimg from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/IMG_0194.JPG";
-import plantImg from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/annie-spratt-hX_hf2lPpUU-unsplash.jpg";
 import styled from "styled-components";
 
 const StyledAboutContainer = styled.div`
@@ -49,6 +48,11 @@ const StyledBottomDiv = styled.div`
 
 const StyledAboutTitle = styled.h2`
   margin-left: 4rem;
+  text-decoration: underline;
+`;
+
+const StyledBottomP = styled.p`
+  margin: 0.2rem 3rem 2rem 3rem;
 `;
 
 const About = () => {
@@ -88,8 +92,8 @@ const About = () => {
         />
       </StyledImageContainer>
       <StyledBottomDiv>
-        <StyledAboutTitle>About me:</StyledAboutTitle>
-        <p>
+        <StyledAboutTitle>Outside of work</StyledAboutTitle>
+        <StyledBottomP>
           My wife, Amy, and our daughter, Romee, make up my world. Also, can't
           forget my dog, Walter. Who loves to be the center of attention, and is
           very much part of the family. We live in Cottonwood Heights, UT. We
@@ -102,7 +106,7 @@ const About = () => {
           Atlantic and Pacific Ocean in the same day. This is a little glimpse
           into my life and I would love to connect to see if I am good fit at
           your company!
-        </p>
+        </StyledBottomP>
       </StyledBottomDiv>
     </StyledAboutContainer>
   );

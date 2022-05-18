@@ -4,21 +4,21 @@ import styled from "styled-components";
 
 const StyledRegisterWrapper = styled.div`
   margin: 5rem 25rem;
-  background-color: #ffffff;
-  height: 48vh;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  border-radius: 15px;
+  height: 100%;
+  padding: 0 10px;
 `;
 
 const StyledRegisterForm = styled.form`
   display: flex;
+  background: white;
   flex-direction: column;
   box-sizing: border-box;
+  border-radius: 15px;
   width: 100%;
-  max-width: 700px;
-  padding: 4rem;
+  max-width: 600px;
+  padding: 1rem;
 `;
 
 const StyledRegisterInput = styled.input`
