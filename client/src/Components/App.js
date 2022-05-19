@@ -8,8 +8,7 @@ import AddPlant from "./AddPlant";
 import EditPlant from "./EditPlant";
 import PrivateRoute from "./PrivateRoute";
 import Contact from "./Contact";
-import pottedPlantRoom from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/ceyda-ciftci-dDVU6D_6T80-unsplash.jpg";
-import plantRoom from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/prudence-earl-NwBx723XaHw-unsplash.jpg";
+import pottedPlantRoom from "./assets/ceyda-ciftci-dDVU6D_6T80-unsplash.jpg";
 import About from "./About";
 
 // Things to contribute before deploying, the last one I could deploy first and add it later
