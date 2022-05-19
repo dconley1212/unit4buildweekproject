@@ -1,7 +1,7 @@
 import React from "react";
-import familyImage from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/DSC_9537 (2).jpg";
-import mountainBiking from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/IMG_1775.JPG";
-import skingimg from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/IMG_0194.JPG";
+import familyImage from "./assets/DSC_9537 (2).jpg";
+import mountainBiking from "./assets/IMG_1775.JPG";
+import skingimg from "./assets/IMG_0194.JPG";
 import styled from "styled-components";
 
 const StyledAboutContainer = styled.div`
