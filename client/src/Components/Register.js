@@ -62,7 +62,7 @@ class Register extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:9000/api/users/auth/register", this.state)
+      .post("/api/users/auth/register", this.state)
       .then((res) => {
         console.log(res);
         this.props.history.push("/login");
