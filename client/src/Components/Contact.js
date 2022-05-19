@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import plantImg from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/annie-spratt-hX_hf2lPpUU-unsplash.jpg";
 
 const StyledContactContainer = styled.div`
   display: flex;
