@@ -8,12 +8,12 @@ import AddPlant from "./AddPlant";
 import EditPlant from "./EditPlant";
 import PrivateRoute from "./PrivateRoute";
 import Contact from "./Contact";
-import plantImg from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/annie-spratt-hX_hf2lPpUU-unsplash.jpg";
+import pottedPlantRoom from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/ceyda-ciftci-dDVU6D_6T80-unsplash.jpg";
+import plantRoom from "/Users/conleyfam/Desktop/lambdaAssignments/unit4/build-week-scaffolding-node/client/src/Components/assets/prudence-earl-NwBx723XaHw-unsplash.jpg";
 import About from "./About";
 
 // Things to contribute before deploying, the last one I could deploy first and add it later
-//1. Footer should link to contact page and about page
-//2. Figure out reminder capability/ adding a picture to the backend and how to send a reminder
+//1. Figure out reminder capability/ adding a picture to the backend and how to send a reminder
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -21,7 +21,7 @@ html {
 }
 body {
     font-family: sans-serif;
-    background: url(${plantImg});
+    background: url(${pottedPlantRoom});
     height: 100%;
     margin: 0;
     padding: 0;
@@ -47,7 +47,7 @@ const StyledNavLink = styled(Link)`
   padding: 0.6rem;
   margin: 0.6rem;
   color: #f5fffa;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 `;
 
 const StyledTitle = styled.h1`
@@ -55,8 +55,10 @@ const StyledTitle = styled.h1`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
-  color: #000000;
+  font-size: 3.5rem;
+  margin-top: 4rem;
+  margin-right: 7rem;
+  color: white;
 `;
 
 const StyledSlogan = styled.h2`
@@ -65,8 +67,9 @@ const StyledSlogan = styled.h2`
   justify-content: center;
   align-items: center;
   font-size: 1.7rem;
-  color: #000000;
+  color: #8fbc8f;
   margin: 0.2rem;
+  margin-right: 7rem;
 `;
 
 const StyledFooter = styled.footer`
@@ -133,7 +136,6 @@ function App() {
         <Route exact path="/">
           <GlobalStyle />
           <StyledTitle>Healthy Plants</StyledTitle>
-          <StyledSlogan>Find your inner green thumb!</StyledSlogan>
           <Login />
         </Route>
       </Switch>

@@ -9,7 +9,7 @@ import SearchBar from "./SearchBar";
 // rerender the plants state after deleting a search without having to press enter
 
 const StyledTitle = styled.h1`
-  color: black;
+  color: white;
   display: flex;
   justify-content: center;
   font-family: "Oxygen", sans-serif;
@@ -75,7 +75,7 @@ const Dashboard = () => {
   console.log(filteredPlants);
   return (
     <div>
-      <StyledTitle>My Plants:</StyledTitle>
+      <StyledTitle>My Plants</StyledTitle>
       <StyledUpperDiv>
         <SearchBar search={search}></SearchBar>
         <StyledAddButton onClick={handleClick}>Add Plant Card</StyledAddButton>

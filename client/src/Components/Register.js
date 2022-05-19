@@ -18,7 +18,7 @@ const StyledRegisterForm = styled.form`
   border-radius: 15px;
   width: 100%;
   max-width: 600px;
-  padding: 1rem;
+  padding: 3rem;
 `;
 
 const StyledRegisterInput = styled.input`
@@ -35,11 +35,14 @@ const StyledRegisterInput = styled.input`
 
 const StyledRegisterButton = styled.button`
   padding: 1rem;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 2px solid black;
   color: #000000;
   background-color: #8fbc8f;
   font-size: 1rem;
+  width: 50%;
+  cursor: pointer;
+  margin-left: 25%;
 `;
 
 class Register extends React.Component {
@@ -75,6 +78,7 @@ class Register extends React.Component {
             <label>
               Create username:
               <StyledRegisterInput
+                placeholder="Username"
                 type="text"
                 name="username"
                 value={this.username}
@@ -84,6 +88,7 @@ class Register extends React.Component {
             <label>
               Create password:
               <StyledRegisterInput
+                placeholder="Password"
                 type="password"
                 name="password"
                 value={this.password}
@@ -93,6 +98,7 @@ class Register extends React.Component {
             <label>
               Phone number:
               <StyledRegisterInput
+                placeholder="Phone Number"
                 type="tel"
                 name="phone_number"
                 value={this.phone_number}
