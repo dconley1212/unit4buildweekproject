@@ -107,7 +107,7 @@ const Login = () => {
   function handleLoginSubmit(e) {
     e.preventDefault();
     axios
-      .post("https://waterplantsapp.herokuapp.com/api/users/auth/login", form)
+      .post("/api/users/auth/login", form)
       .then((resp) => {
         getPayloadData(resp.data.token);
         return push("/dashboard");
