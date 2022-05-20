@@ -47,6 +47,11 @@ const StyledNavLink = styled(Link)`
   margin: 0.6rem;
   color: #f5fffa;
   font-size: 1.1rem;
+  cursor: pointer;
+  &:hover {
+    color: #8fbc8f;
+    transition: 0.2s ease-in-out;
+  }
 `;
 
 const StyledTitle = styled.h1`
