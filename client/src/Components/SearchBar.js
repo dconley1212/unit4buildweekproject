@@ -22,6 +22,12 @@ const StyledSearchButton = styled.button`
   padding: 10px 60px;
   border-radius: 10px;
   font-size: 1rem;
+  cursor: pointer;
+  &:hover {
+    background: black;
+    transition: 0.2s ease-in-out;
+    color: white;
+  }
 `;
 
 const SearchBar = (props) => {
