@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 const StyledCard = styled.div`
   background: white;
@@ -71,6 +72,14 @@ const PlantCard = (props) => {
     push(`/update/${user_id}/${plant.plant_id}`);
   };
 
+  const handleDelete = () => {
+    axiosWithAuth()
+      .delete(`/plants/${user_id}/${plant.plant_id}`)
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
+    push(`/dashboard`);
+  };
+
   return (
     <StyledCard>
       <StyledCardHeader className="card_body">
@@ -87,7 +96,9 @@ const PlantCard = (props) => {
         <StyledEditButton onClick={handleClick}>
           Edit Plant Details
         </StyledEditButton>
-        <StyledDeleteButton>Delete Plant</StyledDeleteButton>
+        <StyledDeleteButton onClick={handleDelete}>
+          Delete Plant
+        </StyledDeleteButton>
       </StyledCardFooter>
     </StyledCard>
   );

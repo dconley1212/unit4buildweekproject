@@ -65,7 +65,7 @@ router.put(
 );
 
 router.delete(
-  "/:user/:plant_id",
+  "/:user_id/:plant_id",
   restricted,
   checkIfPlantExists,
   async (req, res, next) => {
