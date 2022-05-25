@@ -69,7 +69,9 @@ const Dashboard = () => {
     setFilteredPlants(searchedItem);
   };
 
-  const deletePlantCard = () => {};
+  const deletePlantCard = () => {
+    return plants.pop();
+  };
 
   const handleClick = () => {
     push("/dashboard/add");
@@ -85,10 +87,14 @@ const Dashboard = () => {
       <StyledCardContainer>
         {filteredPlants.length === 0
           ? plants.map((plant) => {
-              return <PlantCard plant={plant} />;
+              return (
+                <PlantCard plant={plant} deletePlantCard={deletePlantCard} />
+              );
             })
           : filteredPlants.map((plant) => {
-              return <PlantCard plant={plant} />;
+              return (
+                <PlantCard plant={plant} deletePlantCard={deletePlantCard} />
+              );
             })}
       </StyledCardContainer>
     </div>

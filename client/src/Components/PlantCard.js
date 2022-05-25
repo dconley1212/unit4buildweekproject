@@ -63,6 +63,7 @@ const StyledDeleteButton = styled.button`
 
 const PlantCard = (props) => {
   const { plant } = props;
+  const { deletePlantCard } = props;
 
   const { push } = useHistory();
 
@@ -77,6 +78,8 @@ const PlantCard = (props) => {
       .delete(`/plants/${user_id}/${plant.plant_id}`)
       .then((resp) => console.log(resp))
       .catch((err) => console.log(err));
+
+    deletePlantCard();
   };
 
   return (
