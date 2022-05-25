@@ -69,6 +69,8 @@ const Dashboard = () => {
     setFilteredPlants(searchedItem);
   };
 
+  const deletePlantCard = () => {};
+
   const handleClick = () => {
     push("/dashboard/add");
   };

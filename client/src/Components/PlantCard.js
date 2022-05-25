@@ -77,7 +77,6 @@ const PlantCard = (props) => {
       .delete(`/plants/${user_id}/${plant.plant_id}`)
       .then((resp) => console.log(resp))
       .catch((err) => console.log(err));
-    push(`/dashboard`);
   };
 
   return (
