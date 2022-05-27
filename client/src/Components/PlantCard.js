@@ -73,13 +73,8 @@ const PlantCard = (props) => {
     push(`/update/${user_id}/${plant.plant_id}`);
   };
 
-  const handleDelete = () => {
-    axiosWithAuth()
-      .delete(`/plants/${user_id}/${plant.plant_id}`)
-      .then((resp) => console.log(resp))
-      .catch((err) => console.log(err));
-
-    deletePlantCard();
+  const handleDelete = (plant) => {
+    deletePlantCard(plant);
   };
 
   return (
@@ -98,7 +93,7 @@ const PlantCard = (props) => {
         <StyledEditButton onClick={handleClick}>
           Edit Plant Details
         </StyledEditButton>
-        <StyledDeleteButton onClick={handleDelete}>
+        <StyledDeleteButton onClick={() => handleDelete(plant)}>
           Delete Plant
         </StyledDeleteButton>
       </StyledCardFooter>

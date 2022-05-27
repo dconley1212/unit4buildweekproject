@@ -68,15 +68,20 @@ const Dashboard = () => {
     });
     setFilteredPlants(searchedItem);
   };
-
-  const deletePlantCard = () => {
-    return plants.pop();
-  };
-
   const handleClick = () => {
     push("/dashboard/add");
   };
-  console.log(filteredPlants);
+
+  const deletePlantCard = (specificPlant) => {
+    setPlants(
+      plants.filter((plant) => plant.plant_id !== specificPlant.plant_id)
+    );
+    axiosWithAuth()
+      .delete(`/plants/${user_id}/${specificPlant.plant_id}`)
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <StyledTitle>My Plants</StyledTitle>
