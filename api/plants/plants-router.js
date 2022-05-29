@@ -6,7 +6,7 @@ const {
 } = require("./plants-middleware");
 const Plants = require("./plants-model");
 
-//these routes have been tested and are working on postman
+//these routes have been tested and are working on postman except new s3 url
 
 router.get("/:user_id", restricted, async (req, res, next) => {
   try {
@@ -17,6 +17,8 @@ router.get("/:user_id", restricted, async (req, res, next) => {
     next(err);
   }
 });
+
+router.get("/s3url", restricted, async (req, res, next) => {});
 
 router.post(
   "/:user_id",
