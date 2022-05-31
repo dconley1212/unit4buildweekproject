@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const usersAuthRouter = require("./users/users-authrouter");
 const plantsRouter = require("./plants/plants-router");
+const s3Router = require("./S3Bucket/s3-router");
 
 const server = express();
 server.use(express.json());
@@ -13,6 +14,7 @@ server.use(cors());
 
 server.use("/api/users/auth", usersAuthRouter);
 server.use("/api/plants", plantsRouter);
+server.use("/api/s3url", s3Router);
 
 server.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
