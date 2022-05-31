@@ -77,14 +77,17 @@ const PlantCard = (props) => {
     deletePlantCard(plant);
   };
 
+  const addImage = () => {};
+
   return (
     <StyledCard>
       <StyledCardHeader className="card_body">
         <h2 className="card_title">{plant.nickname}</h2>
-        <StyledCardImage
+        {/* <StyledCardImage
           alt="jade plant"
           src="https://source.unsplash.com/nKyN0Lfy-1w"
-        ></StyledCardImage>
+        ></StyledCardImage> */}
+        <button onClick={addImage}>Add Image</button>
       </StyledCardHeader>
       <StyledCardBody>
         <p className="card_description">{`The species:${plant.species}, needs ${plant.h20_frequency}`}</p>
