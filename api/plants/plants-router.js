@@ -5,6 +5,7 @@ const {
   checkIfPlantExists,
 } = require("./plants-middleware");
 const Plants = require("./plants-model");
+const s3 = require("./s3");
 
 //these routes have been tested and are working on postman except new s3 url
 
@@ -18,7 +19,14 @@ router.get("/:user_id", restricted, async (req, res, next) => {
   }
 });
 
-router.get("/s3url", restricted, async (req, res, next) => {});
+router.get("/s3url", restricted, async (req, res, next) => {
+  try {
+    const url = s3.generateUploadUrl();
+    res.send({ url });
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.post(
   "/:user_id",

@@ -1,6 +1,11 @@
+const dotenv = require("dotenv");
 const aws = require("aws-sdk");
+const Crypto = require("crypto");
+const { promisify } = require("util");
 
 //I left off needing to download the crypto package to encrypt the imageName
+
+dotenv.config();
 
 const region = "us-west-2";
 const bucketName = "water-plants-app-plant-images";
@@ -15,7 +20,8 @@ const s3 = new aws.S3({
 });
 
 async function generateUploadUrl() {
-  const imageName = "random image name";
+  const rawBytes = Crypto.randomBytes(16);
+  const imageName = rawBytes.toString("hex");
 
   const params = {
     Bucket: bucketName,
