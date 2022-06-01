@@ -1,11 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 
-const UploadImage = () => {
+const UploadImage = (props) => {
+    const [ urlString ] = props
+    const [file, setFile] = useState('')
+
+    const handleFile = () => {
+        
+    }
+
+    const handleUpload = () => {
+
+    }
+
   return (
     <>
-      <form>
-        <input type="file"></input>
-      </form>
+      {image === "" ? <form>
+        <input type="file" ></input>
+        <button>Upload</button>
+      </form>}
     </>
   );
 };

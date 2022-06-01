@@ -66,6 +66,7 @@ const PlantCard = (props) => {
   const { plant } = props;
   const { deletePlantCard } = props;
   const [uploadComponent, setUploadComponent] = useState(false);
+  const [urlString, setUrlString] = useState("");
 
   const { push } = useHistory();
 
@@ -81,6 +82,14 @@ const PlantCard = (props) => {
 
   const addImage = () => {
     setUploadComponent(true);
+    axiosWithAuth()
+      .get("/s3url")
+      .then((res) => {
+        setUrlString(res.data.url);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -94,7 +103,7 @@ const PlantCard = (props) => {
         {uploadComponent === false ? (
           <button onClick={addImage}>Add Image</button>
         ) : (
-          <UploadImage />
+          <UploadImage urlString={urlString} />
         )}
       </StyledCardHeader>
       <StyledCardBody>
