@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import UploadImage from "./UploadImage";
 
 const StyledCard = styled.div`
   background: white;
@@ -64,6 +65,7 @@ const StyledDeleteButton = styled.button`
 const PlantCard = (props) => {
   const { plant } = props;
   const { deletePlantCard } = props;
+  const [uploadComponent, setUploadComponent] = useState(false);
 
   const { push } = useHistory();
 
@@ -77,7 +79,9 @@ const PlantCard = (props) => {
     deletePlantCard(plant);
   };
 
-  const addImage = () => {};
+  const addImage = () => {
+    setUploadComponent(true);
+  };
 
   return (
     <StyledCard>
@@ -87,7 +91,11 @@ const PlantCard = (props) => {
           alt="jade plant"
           src="https://source.unsplash.com/nKyN0Lfy-1w"
         ></StyledCardImage> */}
-        <button onClick={addImage}>Add Image</button>
+        {uploadComponent === false ? (
+          <button onClick={addImage}>Add Image</button>
+        ) : (
+          <UploadImage />
+        )}
       </StyledCardHeader>
       <StyledCardBody>
         <p className="card_description">{`The species:${plant.species}, needs ${plant.h20_frequency}`}</p>
