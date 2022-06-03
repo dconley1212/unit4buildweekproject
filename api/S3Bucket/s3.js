@@ -9,7 +9,7 @@ const randomBytes = promisify(crypto.randomBytes);
 
 dotenv.config();
 
-const region = "us-west-2";
+const region = "us-west-1";
 const bucketName = "water-plants-app-plant-images";
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
 const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;

@@ -7,6 +7,11 @@ const UploadImage = (props) => {
 
   const handleFile = (e) => {
     setFile(e.target.files[0]);
+  };
+
+  const handleUpload = (e) => {
+    e.preventDefault();
+    console.log(file);
     axios.put(props.urlString, {
       method: "PUT",
       headers: {
@@ -14,18 +19,14 @@ const UploadImage = (props) => {
       },
       body: file,
     });
-  };
-
-  const handleUpload = () => {
-    const imageUrl = props.urlString.split("?")[0];
-    setImage(imageUrl);
+    setImage(props.urlString);
   };
 
   return (
     <>
       {image === null ? (
         <form onSubmit={handleUpload}>
-          <input type="file" onChange={handleFile}></input>
+          <input type="file" value={file} onChange={handleFile}></input>
           <button>Upload</button>
         </form>
       ) : (
