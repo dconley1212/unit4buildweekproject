@@ -9,13 +9,6 @@ const UploadImage = () => {
 
   const handleFile = (e) => {
     setFile(e.target.files[0]);
-  };
-
-  const handleUpload = (e) => {
-    e.preventDefault();
-    const userFile = new FormData();
-    userFile.append("File", file);
-
     axiosWithAuth()
       .get("/s3url")
       .then((res) => {
@@ -24,14 +17,24 @@ const UploadImage = () => {
       .catch((err) => {
         console.log(err);
       });
+  };
 
-    axios.put(url, userFile, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+  const handleUpload = (e) => {
+    e.preventDefault();
+    const userFile = new FormData();
+    userFile.append("File", file);
 
-    setImage(url.split("?")[0]);
+    console.log(url);
+    console.log(userFile);
+
+    axios
+      .put(url, userFile, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
   };
 
   return (
