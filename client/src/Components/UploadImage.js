@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
-const UploadImage = (props) => {
+const UploadImage = () => {
   const [file, setFile] = useState(null);
+  const [url, setUrl] = useState(null);
   const [image, setImage] = useState(null);
 
   const handleFile = (e) => {
@@ -13,13 +15,23 @@ const UploadImage = (props) => {
     e.preventDefault();
     const userFile = new FormData();
     userFile.append("File", file);
-    axios.put(props.urlString, userFile, {
-      method: "PUT",
+
+    axiosWithAuth()
+      .get("/s3url")
+      .then((res) => {
+        setUrl(res.data.url);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios.put(url, userFile, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
-    setImage(props.urlString);
+
+    setImage(url.split("?")[0]);
   };
 
   return (
@@ -30,7 +42,7 @@ const UploadImage = (props) => {
           <button>Upload</button>
         </form>
       ) : (
-        <img src={file} alt="plants"></img>
+        <img src={image} alt="plants"></img>
       )}
     </>
   );

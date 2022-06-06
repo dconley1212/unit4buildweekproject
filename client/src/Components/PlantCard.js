@@ -65,7 +65,7 @@ const StyledDeleteButton = styled.button`
 const PlantCard = (props) => {
   const { plant } = props;
   const { deletePlantCard } = props;
-  const [uploadComponent, setUploadComponent] = useState(false);
+
   const [urlString, setUrlString] = useState("");
 
   const { push } = useHistory();
@@ -80,18 +80,6 @@ const PlantCard = (props) => {
     deletePlantCard(plant);
   };
 
-  const addImage = () => {
-    setUploadComponent(true);
-    axiosWithAuth()
-      .get("/s3url")
-      .then((res) => {
-        setUrlString(res.data.url);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <StyledCard>
       <StyledCardHeader className="card_body">
@@ -100,11 +88,7 @@ const PlantCard = (props) => {
           alt="jade plant"
           src="https://source.unsplash.com/nKyN0Lfy-1w"
         ></StyledCardImage> */}
-        {uploadComponent === false ? (
-          <button onClick={addImage}>Add Image</button>
-        ) : (
-          <UploadImage urlString={urlString} />
-        )}
+        <UploadImage urlString={urlString} />
       </StyledCardHeader>
       <StyledCardBody>
         <p className="card_description">{`The species:${plant.species}, needs ${plant.h20_frequency}`}</p>
