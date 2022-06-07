@@ -14,7 +14,7 @@ server.use(cors());
 
 server.use("/api/users/auth", usersAuthRouter);
 server.use("/api/plants", plantsRouter);
-server.use("/api/s3url", s3Router);
+server.use("/api/images", s3Router);
 
 server.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));

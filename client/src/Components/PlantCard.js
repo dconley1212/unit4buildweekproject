@@ -88,7 +88,7 @@ const PlantCard = (props) => {
           alt="jade plant"
           src="https://source.unsplash.com/nKyN0Lfy-1w"
         ></StyledCardImage> */}
-        <UploadImage urlString={urlString} />
+        <UploadImage />
       </StyledCardHeader>
       <StyledCardBody>
         <p className="card_description">{`The species:${plant.species}, needs ${plant.h20_frequency}`}</p>
