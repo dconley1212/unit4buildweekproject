@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { generateUploadUrl } = require("./s3");
 const { restricted } = require("../plants/plants-middleware");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 router.get("/", restricted, async (req, res, next) => {
   try {
@@ -10,5 +12,7 @@ router.get("/", restricted, async (req, res, next) => {
     next(err);
   }
 });
+
+router.post("/", upload.single("avatar"), (req, res) => {});
 
 module.exports = router;
