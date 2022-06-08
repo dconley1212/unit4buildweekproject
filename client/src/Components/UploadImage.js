@@ -14,12 +14,16 @@ const UploadImage = () => {
     e.preventDefault();
     const userFile = new FormData();
     userFile.append("Image", file);
+    console.log(userFile);
 
-    axiosWithAuth().post("/images", userFile, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    axiosWithAuth()
+      .post("/images", userFile, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -27,7 +31,7 @@ const UploadImage = () => {
       {image === null ? (
         <form onSubmit={handleUpload}>
           <input type="file" onChange={handleFile} accept="image/*"></input>
-          <button>Add Image</button>
+          <button type="submit">Add Image</button>
         </form>
       ) : (
         <img src={image} alt="plants"></img>
