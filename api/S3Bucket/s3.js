@@ -1,13 +1,6 @@
 const dotenv = require("dotenv");
 const S3 = require("aws-sdk/clients/s3");
 const fs = require("fs");
-const crypto = require("crypto");
-const { promisify } = require("util");
-
-const randomBytes = promisify(crypto.randomBytes);
-
-//I left off needing to download the crypto package to encrypt the imageName
-
 dotenv.config();
 
 const region = process.env.AWS_BUCKET_REGION;
@@ -23,8 +16,6 @@ const s3 = new S3({
 });
 
 async function uploadFile(file) {
-  // const rawBytes = randomBytes(16);
-  // const imageName = rawBytes.toString("hex");
   const fileStream = fs.createReadStream(file.path);
 
   const params = {
