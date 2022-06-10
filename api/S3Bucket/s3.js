@@ -1,7 +1,6 @@
-const dotenv = require("dotenv");
+require("dotenv").config();
 const S3 = require("aws-sdk/clients/s3");
 const fs = require("fs");
-dotenv.config();
 
 const region = process.env.AWS_BUCKET_REGION;
 const bucketName = process.env.AWS_BUCKET_NAME;
@@ -12,10 +11,9 @@ const s3 = new S3({
   region,
   accessKeyId,
   secretAccessKey,
-  signatureVersion: "v4",
 });
 
-async function uploadFile(file) {
+function uploadFile(file) {
   const fileStream = fs.createReadStream(file.path);
 
   const params = {
