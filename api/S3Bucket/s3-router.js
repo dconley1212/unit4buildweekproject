@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { uploadFile } = require("./s3");
+const { uploadFile, getFileStream } = require("./s3");
 const { restricted } = require("../plants/plants-middleware");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
@@ -9,6 +9,8 @@ const upload = multer({ dest: "uploads/" });
 router.get("/images/:key", restricted, async (req, res, next) => {
   try {
     const key = req.params.key;
+    const readStream = getFileStream(key);
+    (await readStream).pipe(res);
   } catch (err) {
     next(err);
   }
