@@ -22,7 +22,10 @@ const UploadImage = () => {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((resp) => console.log(resp))
+      .then((resp) => {
+        console.log(resp.data.imagePath);
+        setImage(resp.data.imagePath);
+      })
       .catch((err) => console.log(err));
   };
 
