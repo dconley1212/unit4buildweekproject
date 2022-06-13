@@ -3,6 +3,9 @@ const { uploadFile, getFileStream } = require("./s3");
 const { restricted } = require("../plants/plants-middleware");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
+const fs = require("fs");
+const util = require("util");
+const unlinkFile = util.promisify(fs.unlink);
 
 // left off trying to upload an image to the backend before sending it to the s3 bucket
 
@@ -21,6 +24,7 @@ router.post("/", upload.single("Image"), async (req, res, next) => {
   try {
     const file = req.file;
     const result = await uploadFile(file);
+    await unlinkFile(file.path);
     res.send({ imagePath: `/api/images/${result.Key}` });
   } catch (err) {
     next(err);

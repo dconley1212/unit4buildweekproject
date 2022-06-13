@@ -24,7 +24,7 @@ const UploadImage = () => {
       })
       .then((resp) => {
         console.log(resp.data.imagePath);
-        setImage(resp.data.imagePath);
+        setImage(resp.data);
       })
       .catch((err) => console.log(err));
   };
@@ -37,11 +37,7 @@ const UploadImage = () => {
           <button type="submit">Add Image</button>
         </form>
       ) : (
-        <img
-          crossOrigin="anonymous"
-          src={`http://localhost:9000${image}`}
-          alt="plants"
-        ></img>
+        <img crossOrigin="anonymous" src={image} alt="plants"></img>
       )}
     </>
   );
