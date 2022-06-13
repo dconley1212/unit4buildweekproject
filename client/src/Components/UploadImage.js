@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
@@ -37,7 +37,11 @@ const UploadImage = () => {
           <button type="submit">Add Image</button>
         </form>
       ) : (
-        <img src={image} alt="plants"></img>
+        <img
+          crossOrigin="anonymous"
+          src={`http://localhost:9000${image}`}
+          alt="plants"
+        ></img>
       )}
     </>
   );

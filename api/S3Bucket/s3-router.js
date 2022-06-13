@@ -21,7 +21,7 @@ router.post("/", upload.single("Image"), async (req, res, next) => {
   try {
     const file = req.file;
     const result = await uploadFile(file);
-    res.send({ imagePath: `/images/${result.Key}` });
+    res.send({ imagePath: `/api/images/${result.Key}` });
   } catch (err) {
     next(err);
   }
