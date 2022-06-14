@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import styled from "styled-components";
+
+const StyledImage = styled.img`
+  width: 30%;
+`;
 
 const UploadImage = () => {
   const [file, setFile] = useState(null);
@@ -24,7 +29,7 @@ const UploadImage = () => {
       })
       .then((resp) => {
         console.log(resp.data.imagePath);
-        setImage(resp.data);
+        setImage(resp.data.imagePath);
       })
       .catch((err) => console.log(err));
   };
@@ -37,7 +42,7 @@ const UploadImage = () => {
           <button type="submit">Add Image</button>
         </form>
       ) : (
-        <img crossOrigin="anonymous" src={image} alt="plants"></img>
+        <StyledImage src={image} alt="plants"></StyledImage>
       )}
     </>
   );

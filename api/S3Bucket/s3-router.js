@@ -9,7 +9,7 @@ const unlinkFile = util.promisify(fs.unlink);
 
 // left off trying to upload an image to the backend before sending it to the s3 bucket
 
-router.get("/:key", restricted, async (req, res, next) => {
+router.get("/:key", async (req, res, next) => {
   try {
     const key = req.params.key;
     console.log(key);
