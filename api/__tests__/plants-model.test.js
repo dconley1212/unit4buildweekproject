@@ -1,7 +1,11 @@
 const plantsModel = require("../plants/plants-model");
 const Knex = require("knex");
 const knexConfig = require("../../knexfile");
-const { getAllPlants, getPlantsWithUserId } = require("../plants/plants-model");
+const {
+  getAllPlants,
+  getPlantsWithUserId,
+  getPlantByPlantId,
+} = require("../plants/plants-model");
 const db = require("../data/db-config");
 
 const knex = Knex(knexConfig.testing.connection);
@@ -95,6 +99,37 @@ describe("plants db access functions", () => {
           plant_id: 3,
         },
       ]);
+    });
+  });
+  describe("function getPlantByPlantId querying the database", () => {
+    test("get the right plant with the plant id", async () => {
+      let plant_id = 1;
+      const [plant] = await getPlantByPlantId(plant_id);
+      expect(plant).toHaveProperty("nickname", "Fiddle Leaf Fig Tree");
+      expect(plant).toHaveProperty("species", "Ficus Lyrata");
+      expect(plant).toHaveProperty("h20_frequency", "once a week");
+      expect(plant).toHaveProperty("user_id", 1);
+      expect(plant.plant_id).toBe(1);
+      expect(plant.image).toBe(null);
+      expect(plant.color).toBe("Unknown");
+      plant_id = 2;
+      const [plantTwo] = await getPlantByPlantId(plant_id);
+      expect(plantTwo.nickname).toBe("Snake Plant");
+      expect(plantTwo.species).toBe("Dracaena trifasciata");
+      expect(plantTwo.h20_frequency).toBe("once a week");
+      expect(plantTwo.user_id).toBe(1);
+      expect(plantTwo).toHaveProperty("plant_id", 2);
+      expect(plantTwo.image).toBe(null);
+      expect(plantTwo.color).toBe("Unknown");
+      plant_id = 3;
+      const [plantThree] = await getPlantByPlantId(plant_id);
+      expect(plantThree.nickname).toBe("English Ivy");
+      expect(plantThree.species).toBe("Common Ivy");
+      expect(plantThree.h20_frequency).toBe("twice a week");
+      expect(plantThree.user_id).toBe(2);
+      expect(plantThree.plant_id).toBe(3);
+      expect(plantThree.image).toBe(null);
+      expect(plantThree.color).toBe("Unknown");
     });
   });
 });
