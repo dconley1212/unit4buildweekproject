@@ -23,6 +23,25 @@ describe("plants db access functions", () => {
       const plants = await getAllPlants();
       expect(plants.length).toBe(3);
     });
-    test("resolve to the correct plant shape", () => {});
+    test("resolve to the correct plant shape", async () => {
+      const plants = await getAllPlants();
+      expect(plants[0]).toHaveProperty("user_id", 1);
+      expect(plants[0]).toHaveProperty("h20_frequency", "once a week");
+      expect(plants[0]).toHaveProperty("species", "Ficus Lyrata");
+      expect(plants[0]).toHaveProperty("nickname", "Fiddle Leaf Fig Tree");
+
+      expect(plants[1]).toMatchObject({
+        nickname: "Snake Plant",
+        species: "Dracaena trifasciata",
+        h20_frequency: "once a week",
+        user_id: 1,
+      });
+      expect(plants[2]).toMatchObject({
+        nickname: "English Ivy",
+        species: "Common Ivy",
+        h20_frequency: "twice a week",
+        user_id: 2,
+      });
+    });
   });
 });
