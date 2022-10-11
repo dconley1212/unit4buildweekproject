@@ -1,6 +1,10 @@
 const plantsModel = require("../plants/plants-model");
-const { getAllPlants } = require("../plants/plants-model");
+const Knex = require("knex");
+const knexConfig = require("../../knexfile");
+const { getAllPlants, getPlantsWithUserId } = require("../plants/plants-model");
 const db = require("../data/db-config");
+
+const knex = Knex(knexConfig.testing.connection);
 
 test("it is the correct environment for the tests", () => {
   expect(process.env.TESTING_DATABASE_URL).toBe(
@@ -15,6 +19,11 @@ beforeAll(async () => {
 
 beforeEach(async () => {
   await db.seed.run();
+});
+
+afterAll((done) => {
+  knex.destroy();
+  done();
 });
 
 describe("plants db access functions", () => {
@@ -42,6 +51,13 @@ describe("plants db access functions", () => {
         h20_frequency: "twice a week",
         user_id: 2,
       });
+    });
+  });
+  describe("plants db function getAllPlantsWithUserID", () => {
+    test("get the correct number of plants by user_id", async () => {
+      const user_id = 1;
+      const userPlants = await getPlantsWithUserId(user_id);
+      expect(userPlants).toHaveLength(2);
     });
   });
 });
