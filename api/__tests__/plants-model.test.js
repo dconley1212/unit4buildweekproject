@@ -59,5 +59,42 @@ describe("plants db access functions", () => {
       const userPlants = await getPlantsWithUserId(user_id);
       expect(userPlants).toHaveLength(2);
     });
+    test("the right plant data is showing for each request to the database with a user_id", async () => {
+      const firstUserId = 1;
+      const secondUserId = 2;
+      const firstUserPlants = await getPlantsWithUserId(firstUserId);
+      expect(firstUserPlants).toEqual([
+        {
+          nickname: "Fiddle Leaf Fig Tree",
+          species: "Ficus Lyrata",
+          h20_frequency: "once a week",
+          user_id: 1,
+          color: "Unknown",
+          image: null,
+          plant_id: 1,
+        },
+        {
+          nickname: "Snake Plant",
+          species: "Dracaena trifasciata",
+          h20_frequency: "once a week",
+          user_id: 1,
+          color: "Unknown",
+          image: null,
+          plant_id: 2,
+        },
+      ]);
+      const secondUserPlants = await getPlantsWithUserId(secondUserId);
+      expect(secondUserPlants).toEqual([
+        {
+          nickname: "English Ivy",
+          species: "Common Ivy",
+          h20_frequency: "twice a week",
+          user_id: 2,
+          color: "Unknown",
+          image: null,
+          plant_id: 3,
+        },
+      ]);
+    });
   });
 });
