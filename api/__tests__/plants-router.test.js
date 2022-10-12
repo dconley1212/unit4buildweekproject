@@ -16,7 +16,7 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
-  const hashPassword = await bcrypt.hashSync("lkavgs", 8);
+  //   const hashPassword = await bcrypt.hashSync("lkavgs", 8);
   await db.seed.run();
   const res = await request("http://localhost:9000/api/users/auth")
     .post("/login")
