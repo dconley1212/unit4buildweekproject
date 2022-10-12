@@ -8,7 +8,7 @@ const {
 } = require("../plants/plants-model");
 const db = require("../data/db-config");
 
-const knex = Knex(knexConfig.testing.connection);
+// const knex = Knex(knexConfig.testing.connection);
 
 test("it is the correct environment for the tests", () => {
   expect(process.env.TESTING_DATABASE_URL).toBe(
@@ -26,7 +26,7 @@ beforeEach(async () => {
 });
 
 afterAll((done) => {
-  knex.destroy();
+  db.destroy();
   done();
 });
 
