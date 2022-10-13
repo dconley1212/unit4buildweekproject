@@ -40,8 +40,15 @@ describe("All APIs for the plant router", () => {
   });
   test("[GET] /:user_id return 200 ok status", async () => {
     const res = await request("http://localhost:9000/api/plants")
-      .get("/1")
+      .get("/8")
       .set("authorization", token);
     expect(res.status).toBe(200);
+  });
+  test("get all plants with associated user", async () => {
+    const res = await request("http://localhost:9000/api/plants")
+      .get("/8")
+      .set("authorization", token);
+    expect(res.body).toMatchObject({});
+    expect(res.body).toHaveLength(0);
   });
 });

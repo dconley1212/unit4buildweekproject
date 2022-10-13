@@ -10,6 +10,10 @@ beforeEach(async () => {
   await db.seed.run();
 });
 
+afterAll(async () => {
+  await db.destroy();
+});
+
 describe("db functions for users", () => {
   test("getAllUsers function returns the right amount of users", async () => {
     const allUsers = await usersModel.getAllUsers();
