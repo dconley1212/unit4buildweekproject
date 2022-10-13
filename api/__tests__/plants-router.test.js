@@ -1,8 +1,6 @@
 const plantsRouter = require("../plants/plants-router");
 const db = require("../data/db-config");
 const request = require("supertest");
-const bcrypt = require("bcrypt");
-const jsonwebtoken = require("jsonwebtoken");
 
 // left off trying to figure out how to get the token before every test or
 // all the tests and save the token to be send for each request to the plants
@@ -21,12 +19,11 @@ beforeEach(async () => {
   const res = await request("http://localhost:9000/api/users/auth")
     .post("/login")
     .send({
-      username: "amyconley",
-      password: "lkavgs",
-      phone_number: 8014344556,
+      username: "dc12",
+      password: "Walter123",
+      phone_number: 8017736554,
     });
   token = res.body.token;
-  console.log(token);
 });
 
 afterAll(async () => {
