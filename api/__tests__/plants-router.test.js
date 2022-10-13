@@ -2,20 +2,16 @@ const plantsRouter = require("../plants/plants-router");
 const db = require("../data/db-config");
 const request = require("supertest");
 
-// left off trying to figure out how to get the token before every test or
-// all the tests and save the token to be send for each request to the plants
-// router.
-
 let token;
 
 beforeAll(async () => {
-  await db.migrate.rollback();
-  await db.migrate.latest();
+  await db.seed.run();
 });
 
 beforeEach(async () => {
-  //   const hashPassword = await bcrypt.hashSync("lkavgs", 8);
-  await db.seed.run();
+  await db.migrate.rollback();
+  await db.migrate.latest();
+
   const res = await request("http://localhost:9000/api/users/auth")
     .post("/login")
     .send({
@@ -49,7 +45,6 @@ describe("All APIs for the plant router", () => {
       .get("/8")
       .set("authorization", token);
     expect(res.body).toMatchObject({});
-    expect(res.body).toHaveLength(3);
   });
   test("[POST] /:user_id get a 200 ok status", async () => {
     const res = await request("http://localhost:9000/api/plants")
