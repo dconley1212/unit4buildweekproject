@@ -44,11 +44,35 @@ describe("All APIs for the plant router", () => {
       .set("authorization", token);
     expect(res.status).toBe(200);
   });
-  test("get all plants with associated user", async () => {
+  test("[GET] /:user_id plants with associated user", async () => {
     const res = await request("http://localhost:9000/api/plants")
       .get("/8")
       .set("authorization", token);
     expect(res.body).toMatchObject({});
-    expect(res.body).toHaveLength(0);
+    expect(res.body).toHaveLength(3);
+  });
+  test("[POST] /:user_id get a 200 ok status", async () => {
+    const res = await request("http://localhost:9000/api/plants")
+      .post("/8")
+      .send({
+        nickname: "American Marigold",
+        species: "Asteraceae",
+        h20_frequency: "twice a week",
+        user_id: 8,
+      })
+      .set("authorization", token);
+    expect(res.status).toBe(200);
+  });
+  test("[POST /:user_id get a 400 status when certain data is missing", async () => {
+    const res = await request("http://localhost:9000/api/plants")
+      .post("/8")
+      .send({
+        nickname: "American Marigold",
+        species: "",
+        h20_frequency: "twice a week",
+        user_id: 8,
+      })
+      .set("authorization", token);
+    expect(res.status).toBe(400);
   });
 });
