@@ -5,6 +5,7 @@ const {
   getAllPlants,
   getPlantsWithUserId,
   getPlantByPlantId,
+  addPlants,
 } = require("../plants/plants-model");
 const db = require("../data/db-config");
 
@@ -130,6 +131,21 @@ describe("plants db access functions", () => {
       expect(plantThree.plant_id).toBe(3);
       expect(plantThree.image).toBe(null);
       expect(plantThree.color).toBe("Unknown");
+    });
+  });
+  describe("tests for addPlants db function", () => {
+    test("plant is inserted into the database with correct properties", async () => {
+      const plant = {
+        nickname: "Annual Vinca",
+        species: "Apocynceae",
+        h20_frequency: "daily",
+        user_id: 2,
+      };
+      const newPlant = await addPlants(plant);
+      expect(newPlant).toHaveProperty("nickname");
+      expect(newPlant).toHaveProperty("species");
+      expect(newPlant).toHaveProperty("h20_frequency");
+      expect(newPlant).toHaveProperty("user_id");
     });
   });
 });
