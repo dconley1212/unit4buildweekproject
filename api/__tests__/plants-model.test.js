@@ -147,5 +147,20 @@ describe("plants db access functions", () => {
       expect(newPlant).toHaveProperty("h20_frequency");
       expect(newPlant).toHaveProperty("user_id");
     });
+    test("addPlant function returns the matching object", async () => {
+      const plant = {
+        nickname: "Bacopa",
+        species: "Scrophulariaceae",
+        h20_frequency: "daily",
+        user_id: 3,
+      };
+      const newPlant = await addPlants(plant);
+      expect(newPlant).toMatchObject({
+        nickname: "Bacopa",
+        species: "Scrophulariaceae",
+        h20_frequency: "daily",
+        user_id: 3,
+      });
+    });
   });
 });
