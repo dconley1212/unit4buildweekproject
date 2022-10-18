@@ -7,6 +7,7 @@ const {
   getPlantByPlantId,
   addPlants,
   updatePlant,
+  deletePlant,
 } = require("../plants/plants-model");
 const db = require("../data/db-config");
 
@@ -176,6 +177,21 @@ describe("plants db access functions", () => {
       const updatedPlant = await updatePlant(plant_id, editedPlant);
 
       expect(updatedPlant).toBe(1);
+    });
+  });
+  describe("deletePlant db function", () => {
+    test("plant is deleted when db function deletePlant given plant id", async () => {
+      let plant_id = 3;
+      const [deletedPlant] = await deletePlant(plant_id);
+      expect(deletedPlant).toEqual({
+        color: "Unknown",
+        h20_frequency: "twice a week",
+        image: null,
+        nickname: "English Ivy",
+        plant_id: 3,
+        species: "Common Ivy",
+        user_id: 2,
+      });
     });
   });
 });
