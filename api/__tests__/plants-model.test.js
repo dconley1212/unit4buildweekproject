@@ -6,6 +6,7 @@ const {
   getPlantsWithUserId,
   getPlantByPlantId,
   addPlants,
+  updatePlant,
 } = require("../plants/plants-model");
 const db = require("../data/db-config");
 
@@ -161,6 +162,20 @@ describe("plants db access functions", () => {
         h20_frequency: "daily",
         user_id: 3,
       });
+    });
+  });
+  describe("update plants db function", () => {
+    test("the updatePlant function will update the plant information", async () => {
+      let plant_id = 1;
+      let editedPlant = {
+        nickname: "Bacopa",
+        species: "Scrophulariaceae",
+        h20_frequency: "daily",
+        user_id: 1,
+      };
+      const updatedPlant = await updatePlant(plant_id, editedPlant);
+
+      expect(updatedPlant).toBe(1);
     });
   });
 });
