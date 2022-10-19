@@ -70,4 +70,10 @@ describe("All APIs for the plant router", () => {
       .set("authorization", token);
     expect(res.status).toBe(400);
   });
+  test("[GET] /:user_id/:plant_id return returns 200 ok status", async () => {
+    const res = await request("http://localhost:9000/api/plants")
+      .get("1/1")
+      .set("authorization", token);
+    expect(res.status).toBe(200);
+  });
 });
