@@ -36,6 +36,18 @@ describe("all APIs for authentication and authorization", () => {
     const res = await request("http://localhost:9000/api/users/auth")
       .post("/register")
       .send(user);
+
     expect(res.status).toBe(400);
+  });
+  test("[Post] /login api is giving a 200 status when user tries to log in", async () => {
+    const user = {
+      username: "amyconley",
+      password: "lkavgs",
+    };
+    const res = await request("http://localhost:9000/api/users/auth")
+      .post("/login")
+      .send(user);
+
+    expect(res.status).toBe(200);
   });
 });
