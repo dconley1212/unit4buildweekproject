@@ -15,6 +15,8 @@ afterAll(async () => {
   await db.destroy();
 });
 
+let token;
+
 describe("all APIs for authentication and authorization", () => {
   test("[POST] /register api is giving a 200 ok status", async () => {
     const newUser = {
@@ -43,10 +45,24 @@ describe("all APIs for authentication and authorization", () => {
     const user = {
       username: "amyconley",
       password: "lkavgs",
+      phone_number: 8014344556,
     };
     const res = await request("http://localhost:9000/api/users/auth")
       .post("/login")
       .send(user);
+    token = res.body.token;
+    expect(res.status).toBe(200);
+  });
+  test("[PUT] /register api is giving 200 status when user tries to log in", async () => {
+    const updatedUser = {
+      username: "amyconley",
+      password: "adjgfio",
+      phone_number: 8014344556,
+    };
+    const res = await request("http://localhost:9000/api/users/auth")
+      .put("/register")
+      .send(updatedUser)
+      .set("authorization", token);
 
     expect(res.status).toBe(200);
   });
