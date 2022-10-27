@@ -31,4 +31,13 @@ describe("AddPlant module is displaying the wrong features", () => {
     const h20Frequency = screen.getByLabelText("h20 Frequency:");
     expect(h20Frequency).toBeInTheDocument();
   });
+  it("Add plant button is rendering correctly", () => {
+    render(
+      <Router>
+        <AddPlant />
+      </Router>
+    );
+    const addPlantButton = screen.getByRole("button", { name: "Add Plant" });
+    expect(addPlantButton).toBeInTheDocument();
+  });
 });
